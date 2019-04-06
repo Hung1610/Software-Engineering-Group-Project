@@ -50,7 +50,7 @@ public class FormMenuChinh {
 					public void run() {
 						try {
 							FormNhanVien window = new FormNhanVien();
-							window.frame.setVisible(true);
+							window.frmQuanLyNhan.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
