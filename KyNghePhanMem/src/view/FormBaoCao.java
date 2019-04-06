@@ -8,6 +8,8 @@ import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -37,6 +39,7 @@ public class FormBaoCao {
 	BaoCaoBo bo = new BaoCaoBo();
 	ArrayList<BaoCaoBean> bc;
 	JScrollPane scrollPane = new JScrollPane();
+	DefaultTableModel model = new DefaultTableModel();
 
 	/**
 	 * Launch the application.
@@ -47,6 +50,7 @@ public class FormBaoCao {
 				try {
 					FormBaoCao window = new FormBaoCao();
 					window.frmInBaoCao.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -73,29 +77,23 @@ public class FormBaoCao {
 				try {
 					DungChung dc = new DungChung();
 					dc.KetNoi();
-					 //Them ten cua colummn
-			        DefaultTableModel model = new DefaultTableModel();
-			        model.addColumn("Ma Phan Cong");
-			        model.addColumn("So Ngay Da Lam Viec");
-			        model.addColumn("Tien Do");
-					table = new JTable(model);
-					scrollPane.setViewportView(table);
-					
-					
+					//model.insertRow(0, new Object[3]);
+					//model.insertRow(1, new Object[3]);
+					//model.removeRow(0);
 					//Them hang vao bang
-					try {
-						bc = bo.getBaoCao();
-						Object rowData[] = new Object[3];
-						for (BaoCaoBean thongtinbaocao : bc) {
-							rowData[0]= thongtinbaocao.getMaPhanCong();
-							rowData[1]= thongtinbaocao.getSoNgayDaLamViec();
-							rowData[2]= thongtinbaocao.getTienDo();
-							model.addRow(rowData);
-						}
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+//					try {
+//						bc = bo.getBaoCao();
+//						Object rowData[] = new Object[3];
+//						for (BaoCaoBean thongtinbaocao : bc) {
+//							rowData[0]= thongtinbaocao.getMaPhanCong();
+//							rowData[1]= thongtinbaocao.getSoNgayDaLamViec();
+//							rowData[2]= thongtinbaocao.getTienDo();
+//							model.addRow(rowData);
+//						}
+//					} catch (Exception e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 					
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -113,6 +111,13 @@ public class FormBaoCao {
 		
 		
 		tabbedPane.addTab("Thong tin phan cong", null, scrollPane, null);
+		table = new JTable(model);
+		scrollPane.setViewportView(table);
+		 //Them ten cua colummn
+		model.addColumn("Ma Phan Cong");
+        model.addColumn("So Ngay Da Lam Viec");
+        model.addColumn("Tien Do");
+        model.addRow(new Object[3]);
 		
 		JButton btnInRaFile = new JButton("In ra File");
 		btnInRaFile.addActionListener(new ActionListener() {
@@ -146,20 +151,45 @@ public class FormBaoCao {
 		
       
 		
-//		JComboBox comboBox = new JComboBox();
-//        comboBox.addItem("Snowboarding");
-//        comboBox.addItem("Rowing");
-//        comboBox.addItem("Knitting");
-//        comboBox.addItem("Speed reading");
-//        comboBox.addItem("Pool");
-//        comboBox.addItem("None of the above");
-//        table.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(comboBox));
-//        System.out.println(table.getColumnModel().getColumn(1).getHeaderValue());
-       
-
-        
+		JComboBox comboBox = new JComboBox();
+        comboBox.addItem("Snowboarding");
+        comboBox.addItem("Rowing");
+        comboBox.addItem("Knitting");
+        comboBox.addItem("Speed reading");
+        comboBox.addItem("Pool");
+        comboBox.addItem("None of the above");
+        table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(comboBox));
+        System.out.println(table.getColumnModel().getColumn(1).getHeaderValue());
 		
-
-		
+		model.addTableModelListener( new TableModelListener() {
+			@Override
+			public void tableChanged(TableModelEvent e) {
+				// TODO Auto-generated method stub
+				//System.out.println(model.getTableModelListeners());
+				//model.addRow( new Object[3]);
+				int n = e.getLastRow()+1;
+				if (e.getType()==TableModelEvent.UPDATE) {
+				      // something was entered into the last row, add a new row
+					Object rowData[] = new Object[3];
+					rowData[2]= "";
+					rowData[0]= "";
+					rowData[1]= "";
+					System.out.println("thang132");
+					//model.insertRow(e.getLastRow(), rowData);
+					model.addRow(rowData);
+				
+					//model.fireTableRowsInserted(0, 1);
+					//model.fireTableRowsInserted(0, e.getLastRow());
+					//e.getType();
+					
+					
+					
+					//model.setValueAt(e.getLastRow(), 1, 1);
+					//model.
+					
+				    }
+				
+			}
+		});
 	}
 }
