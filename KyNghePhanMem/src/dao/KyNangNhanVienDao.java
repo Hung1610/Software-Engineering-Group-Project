@@ -16,7 +16,14 @@ public class KyNangNhanVienDao {
 		ResultSet rs = cmd.executeQuery();
 		while(rs.next())
 		{
-			string MaNV = 
+			String MaNV = rs.getString(0);
+			String MaKyNang = rs.getString(1);
+			String MoTaKhac = rs.getString(2);
+			KyNangNhanVienBean kn = new KyNangNhanVienBean(MaNV, MaKyNang, MoTaKhac);
+			listSkill.add(kn);
 		}
+		rs.close();
+		cmd.close();
+		return listSkill;
 	}
 }
