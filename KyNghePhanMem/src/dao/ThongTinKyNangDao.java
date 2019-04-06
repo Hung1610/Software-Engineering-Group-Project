@@ -23,7 +23,7 @@ public class ThongTinKyNangDao {
 
 	// get all ky nang
 	public ArrayList<KyNangBean> getKyNang() throws Exception {
-		String sql = "select * from KiNang";
+		String sql = "select * from KyNang";
 		PreparedStatement cmd = DungChung.cn.prepareStatement(sql);
 		ResultSet rs=cmd.executeQuery();
 		while(rs.next()) {

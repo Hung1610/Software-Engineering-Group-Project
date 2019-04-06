@@ -33,4 +33,8 @@ public class KyNangBean {
 	public void setChiTiet(String chiTiet) {
 		ChiTiet = chiTiet;
 	}
+	@Override 
+	public String toString() {
+		return TenKyNang;
+	}
 }

@@ -25,4 +25,13 @@ public class KyNangNhanVienDao {
 		rs.close();
 		return listSkill;
 	}
+	public void themKyNangNhanVien(String manv,String makn,String motakhac) throws Exception{
+		String sql = "insert into KyNangNhanVien values(?,?,?)";
+		PreparedStatement cmd = DungChung.cn.prepareStatement(sql);
+		cmd.setString(1, manv);
+		cmd.setString(2, makn);
+		cmd.setString(3, motakhac);
+		cmd.executeUpdate();
+		cmd.close();
+	}
 }
