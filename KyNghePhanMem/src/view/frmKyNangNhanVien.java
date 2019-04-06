@@ -55,6 +55,7 @@ public class frmKyNangNhanVien extends JFrame {
 	 * Create the frame.
 	 */
 	public frmKyNangNhanVien() {
+		setTitle("Kỹ Năng Nhân Viên");
 		
 		addWindowListener(new WindowAdapter() {
 			
@@ -83,7 +84,7 @@ public class frmKyNangNhanVien extends JFrame {
 				
 			}
 		});
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 753, 409);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -98,10 +99,11 @@ public class frmKyNangNhanVien extends JFrame {
 		tabbedPane.addTab("K\u1EF9 N\u0103ng", null, panel, null);
 		
 		JButton btnNewButton = new JButton("Th\u00EAm k\u1EF9 n\u0103ng");
-		btnNewButton.setBounds(478, 21, 130, 23);
+		btnNewButton.setBounds(572, 33, 130, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				frmThemNhanVien frame = new frmThemNhanVien();
+				frame.setVisible(true);
 			}
 		});
 		panel.setLayout(null);

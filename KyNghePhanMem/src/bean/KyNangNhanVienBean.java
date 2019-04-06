@@ -32,5 +32,8 @@ public class KyNangNhanVienBean {
 	public void setMoTaKhac(String moTaKhac) {
 		MoTaKhac = moTaKhac;
 	}
-	
+	@Override 
+	public String toString() {
+		return MaNV;
+	}
 }

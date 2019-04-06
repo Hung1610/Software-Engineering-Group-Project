@@ -54,7 +54,10 @@ public class NhanVien {
 		Sdt = sdt;
 		Email = email;
 	}
-	
+	@Override 
+	public String toString() {
+		return TenNhanVien;
+	}
 	
 	
 }
