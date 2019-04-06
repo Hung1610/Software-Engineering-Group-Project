@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import bean.KyNangNhanVienBean;
 import bo.KyNangNhanVienBo;
+import dao.DungChung;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
@@ -26,8 +27,13 @@ import javax.swing.JTable;
 public class frmKyNangNhanVien extends JFrame {
 
 	private JPanel contentPane;
-	DefaultTableModel mh = new DefaultTableModel();
+	
 	private JTable table;
+	private JScrollPane scrollPane;
+	DefaultTableModel mh = new DefaultTableModel();
+	KyNangNhanVienBo knBo = new KyNangNhanVienBo();
+	DungChung kn = new DungChung();
+	
 
 	/**
 	 * Launch the application.
@@ -49,27 +55,32 @@ public class frmKyNangNhanVien extends JFrame {
 	 * Create the frame.
 	 */
 	public frmKyNangNhanVien() {
+		
 		addWindowListener(new WindowAdapter() {
+			
 			@Override
 			public void windowOpened(WindowEvent arg0) {
+				
 				// add colum to table
 				mh.addColumn("Mã nhân viên");
 				mh.addColumn("Mã kỹ năng");
 				mh.addColumn("Mô tả khác");
-//				try {
-//					KyNangNhanVienBo knBo = new KyNangNhanVienBo();
-//					ArrayList<KyNangNhanVienBean>  ds = knBo.getListSkill();
-//					for(KyNangNhanVienBean kn : ds) {
-//						Object[] t = new Object[3];
-//						t[0] = kn.getMaNV();
-//						t[1] = kn.getMaKyNang();
-//						t[2] = kn.getMoTaKhac();
-//						mh.addRow(t);
-//					}
-//					table.setModel(mh);
-//				} catch (Exception e) {
-//					System.out.println(e.getMessage());
-//				}
+				try {
+					kn.KetNoi();
+					ArrayList<KyNangNhanVienBean>  ds = knBo.getListSkill();
+					((DefaultTableModel)table.getModel()).setRowCount(0);
+					for(KyNangNhanVienBean kn : ds) {
+						Object[] t = new Object[3];
+						t[0] = kn.getMaNV();
+						t[1] = kn.getMaKyNang();
+						t[2] = kn.getMoTaKhac();
+						mh.addRow(t);
+					}
+					table.setModel(mh);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,20 +101,22 @@ public class frmKyNangNhanVien extends JFrame {
 		btnNewButton.setBounds(478, 21, 130, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
 		panel.setLayout(null);
 		panel.add(btnNewButton);
 		
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(40, 126, 428, 117);
+		tabbedPane_1.setBounds(10, 67, 692, 242);
 		panel.add(tabbedPane_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		tabbedPane_1.addTab("New tab", null, scrollPane, null);
+		tabbedPane_1.addTab("Danh sách kỹ năng", null, scrollPane, null);
 		
 		table = new JTable();
 		scrollPane.setRowHeaderView(table);
+		scrollPane.setViewportView(table);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Ch\u1EC9nh s\u1EEDa k\u1EF9 n\u0103ng", null, panel_1, null);
