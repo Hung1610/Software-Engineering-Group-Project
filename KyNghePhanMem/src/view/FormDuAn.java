@@ -28,7 +28,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class FormDuAn extends JFrame {
-
+	
 	private JPanel contentPane;
 	TextField txttenda = new TextField();
 	TextField txtnbd = new TextField();
