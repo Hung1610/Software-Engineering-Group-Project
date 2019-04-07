@@ -13,6 +13,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 
 import bean.BaoCaoBean;
 import bo.BaoCaoBo;
@@ -30,6 +31,8 @@ import java.io.FileWriter;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.ActionEvent;
 
 public class FormBaoCao {
@@ -39,6 +42,9 @@ public class FormBaoCao {
 	BaoCaoBo bo = new BaoCaoBo();
 	ArrayList<BaoCaoBean> bc;
 	JScrollPane scrollPane = new JScrollPane();
+	//DefaultTableModel model = new DefaultTableModel();
+	ArrayList<String> a = null;
+	JComboBox comboBox = new JComboBox();
 	DefaultTableModel model = new DefaultTableModel();
 
 	/**
@@ -50,7 +56,7 @@ public class FormBaoCao {
 				try {
 					FormBaoCao window = new FormBaoCao();
 					window.frmInBaoCao.setVisible(true);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -74,50 +80,66 @@ public class FormBaoCao {
 		frmInBaoCao.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
+
 				try {
 					DungChung dc = new DungChung();
 					dc.KetNoi();
-					//model.insertRow(0, new Object[3]);
-					//model.insertRow(1, new Object[3]);
-					//model.removeRow(0);
-					//Them hang vao bang
-//					try {
-//						bc = bo.getBaoCao();
-//						Object rowData[] = new Object[3];
-//						for (BaoCaoBean thongtinbaocao : bc) {
-//							rowData[0]= thongtinbaocao.getMaPhanCong();
-//							rowData[1]= thongtinbaocao.getSoNgayDaLamViec();
-//							rowData[2]= thongtinbaocao.getTienDo();
-//							model.addRow(rowData);
-//						}
-//					} catch (Exception e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-					
+					// model.insertRow(0, new Object[3]);
+					// model.insertRow(1, new Object[3]);
+					// model.removeRow(0);
+					// Them hang vao bang
+					// try {
+					// bc = bo.getBaoCao();
+					// Object rowData[] = new Object[3];
+					// for (BaoCaoBean thongtinbaocao : bc) {
+					// rowData[0]= thongtinbaocao.getMaPhanCong();
+					// rowData[1]= thongtinbaocao.getSoNgayDaLamViec();
+					// rowData[2]= thongtinbaocao.getTienDo();
+					// model.addRow(rowData);
+					// }
+					// } catch (Exception e) {
+					// // TODO Auto-generated catch block
+					// e.printStackTrace();
+					// }
+					try {
+						bc = bo.getBaoCao();
+
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+
+				for (BaoCaoBean thongtinbaocao : bc) {
+					comboBox.addItem(thongtinbaocao.getMaPhanCong());
+				}
+
 			}
 		});
 		frmInBaoCao.setBounds(100, 100, 787, 507);
 		frmInBaoCao.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmInBaoCao.getContentPane().setLayout(null);
-		
+
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(133, 105, 546, 290);
 		frmInBaoCao.getContentPane().add(tabbedPane);
 		
-		
 		tabbedPane.addTab("Thong tin phan cong", null, scrollPane, null);
 		table = new JTable(model);
+		model.addRow(new Object[3]);
+		// Them ten cua colummn
+				model.addColumn("Ma Phan Cong");
+				model.addColumn("So Ngay Da Lam Viec");
+				model.addColumn("Tien Do");
+		//TableModel model = table.getModel();
+		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
-		 //Them ten cua colummn
-		model.addColumn("Ma Phan Cong");
-        model.addColumn("So Ngay Da Lam Viec");
-        model.addColumn("Tien Do");
-        model.addRow(new Object[3]);
+		
+		
 		
 		JButton btnInRaFile = new JButton("In ra File");
 		btnInRaFile.addActionListener(new ActionListener() {
@@ -128,15 +150,14 @@ public class FormBaoCao {
 					Formatter fmt = new Formatter("output.txt");
 					int n = bc.size();
 					String formatStr = "%-20s %-15s %-15s%n";
-					p.println(String.format("%-20s %-25s %-20s%n","Ma Phan Cong", "So Ngay Da Lam Viec","Tien Do"));
-					p.println("-------------------------------------------------------------------------------------------------------------------------");
-					for (int i = 0; i < n; i++) {						
-						//p.println(bc.get(i).getMaPhanCong()+", "+bc.get(i).getSoNgayDaLamViec()+", "+);
-						//fmt.format("%-20s%10d\n", bc.get(i).getMaPhanCong()+", "+bc.get(i).getSoNgayDaLamViec()+", "+bc.get(i).getTienDo() );
-						//p.println(fmt);
-						//output.write(String.format(formatStr, bc.get(i).getMaPhanCong(), bc.get(i).getSoNgayDaLamViec(),bc.get(i).getTienDo()));
-						p.println(String.format("%-20s %-25s %-20s%n",bc.get(i).getMaPhanCong(), bc.get(i).getSoNgayDaLamViec(),bc.get(i).getTienDo() ));
-						p.println("-------------------------------------------------------------------------------------------------------------------------");
+					p.println(String.format("%-20s %-25s %-20s%n", "Ma Phan Cong", "So Ngay Da Lam Viec", "Tien Do"));
+					p.println(
+							"-------------------------------------------------------------------------------------------------------------------------");
+					for (int i = 0; i < n; i++) {
+						p.println(String.format("%-20s %-25s %-20s%n", bc.get(i).getMaPhanCong(),
+								bc.get(i).getSoNgayDaLamViec(), bc.get(i).getTienDo()));
+						p.println(
+								"-------------------------------------------------------------------------------------------------------------------------");
 					}
 					w.close();
 				} catch (Exception e) {
@@ -146,48 +167,29 @@ public class FormBaoCao {
 		});
 		btnInRaFile.setBounds(318, 51, 97, 25);
 		frmInBaoCao.getContentPane().add(btnInRaFile);
-		
-		//String[] columnNames = {"Ma Phan Cong","So Ngay Da Lam Viec","Tien Do"};
-		
-      
-		
-		JComboBox comboBox = new JComboBox();
-        comboBox.addItem("Snowboarding");
-        comboBox.addItem("Rowing");
-        comboBox.addItem("Knitting");
-        comboBox.addItem("Speed reading");
-        comboBox.addItem("Pool");
-        comboBox.addItem("None of the above");
-        table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(comboBox));
-        System.out.println(table.getColumnModel().getColumn(1).getHeaderValue());
-		
-		model.addTableModelListener( new TableModelListener() {
+		//model.setValueAt("thang", 0, 0);
+		table.getModel().addTableModelListener(new TableModelListener() {
 			@Override
 			public void tableChanged(TableModelEvent e) {
 				// TODO Auto-generated method stub
-				//System.out.println(model.getTableModelListeners());
-				//model.addRow( new Object[3]);
-				int n = e.getLastRow()+1;
-				if (e.getType()==TableModelEvent.UPDATE) {
-				      // something was entered into the last row, add a new row
+				if (e.getType()== e.UPDATE && table.getRowCount()==table.getSelectedRow()+1) {
+					// something was entered into the last row, add a new row
 					Object rowData[] = new Object[3];
-					rowData[2]= "";
-					rowData[0]= "";
-					rowData[1]= "";
-					System.out.println("thang132");
-					//model.insertRow(e.getLastRow(), rowData);
+					rowData[0] = null;
+					rowData[1] = null;
+					rowData[2] = null;
 					model.addRow(rowData);
-				
-					//model.fireTableRowsInserted(0, 1);
-					//model.fireTableRowsInserted(0, e.getLastRow());
-					//e.getType();
-					
-					
-					
-					//model.setValueAt(e.getLastRow(), 1, 1);
-					//model.
-					
-				    }
+				}
+				if(e.getType()==e.INSERT) {
+					for (BaoCaoBean thongtinbaocao : bc) {
+						if(thongtinbaocao.getMaPhanCong().equals(model.getValueAt(table.getSelectedRow(), 0))) {
+							System.out.println("123");
+							model.setValueAt(thongtinbaocao.getSoNgayDaLamViec(), table.getSelectedRow(), 1);
+							model.setValueAt(thongtinbaocao.getTienDo(), table.getSelectedRow(), 2);
+							break;
+						}
+					}
+				}
 				
 			}
 		});
