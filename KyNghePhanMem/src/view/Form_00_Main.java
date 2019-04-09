@@ -25,7 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 
-public class GiaoDienChinh extends JFrame {
+public class Form_00_Main extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -41,7 +41,7 @@ public class GiaoDienChinh extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GiaoDienChinh frame = new GiaoDienChinh();
+					Form_00_Main frame = new Form_00_Main();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class GiaoDienChinh extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GiaoDienChinh() {
+	public Form_00_Main() {
 		setTitle("Menu");
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -113,7 +113,7 @@ public class GiaoDienChinh extends JFrame {
 		JButton btnNhnVin = new JButton("Nhân Viên");
 		btnNhnVin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				FomNhanVienNangCap nv = new FomNhanVienNangCap();
+				Form_02_NhanVienNangCao nv = new Form_02_NhanVienNangCao();
 				nv.frmQuanLyNhan.setVisible(true);
 				nv.frmQuanLyNhan.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				
@@ -125,7 +125,7 @@ public class GiaoDienChinh extends JFrame {
 		JButton btnBoCoCng = new JButton("Báo Cáo Công Việc");
 		btnBoCoCng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    FormBaoCao bc = new FormBaoCao();
+			    Form_04_BaoCao bc = new Form_04_BaoCao();
 			    bc.frmInBaoCao.setVisible(true);
 			    bc.frmInBaoCao.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
@@ -136,7 +136,7 @@ public class GiaoDienChinh extends JFrame {
 		JButton btnCpNhtK = new JButton("Cập Nhật Kỹ Năng");
 		btnCpNhtK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmKyNangNhanVien kn = new frmKyNangNhanVien();
+				Form_03_KyNangNhanVien kn = new Form_03_KyNangNhanVien();
 				kn.setVisible(true);
 				kn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}

@@ -24,7 +24,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JTable;
 
-public class frmKyNangNhanVien extends JFrame {
+public class Form_03_KyNangNhanVien extends JFrame {
 
 	private JPanel contentPane;
 	
@@ -42,7 +42,7 @@ public class frmKyNangNhanVien extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmKyNangNhanVien frame = new frmKyNangNhanVien();
+					Form_03_KyNangNhanVien frame = new Form_03_KyNangNhanVien();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,7 +54,7 @@ public class frmKyNangNhanVien extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmKyNangNhanVien() {
+	public Form_03_KyNangNhanVien() {
 		setTitle("Kỹ Năng Nhân Viên");
 		
 		addWindowListener(new WindowAdapter() {
@@ -102,7 +102,7 @@ public class frmKyNangNhanVien extends JFrame {
 		btnNewButton.setBounds(572, 33, 130, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frmThemNhanVien frame = new frmThemNhanVien();
+				FormThemNhanVien frame = new FormThemNhanVien();
 				frame.setVisible(true);
 			}
 		});

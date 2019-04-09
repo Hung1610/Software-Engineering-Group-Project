@@ -35,7 +35,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ActionEvent;
 
-public class FormBaoCao {
+public class Form_04_BaoCao {
 
     JFrame frmInBaoCao;
 	private JTable table;
@@ -54,7 +54,7 @@ public class FormBaoCao {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormBaoCao window = new FormBaoCao();
+					Form_04_BaoCao window = new Form_04_BaoCao();
 					window.frmInBaoCao.setVisible(true);
 
 				} catch (Exception e) {
@@ -67,7 +67,7 @@ public class FormBaoCao {
 	/**
 	 * Create the application.
 	 */
-	public FormBaoCao() {
+	public Form_04_BaoCao() {
 		initialize();
 	}
 

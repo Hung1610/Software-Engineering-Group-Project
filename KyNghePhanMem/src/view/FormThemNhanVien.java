@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class frmThemNhanVien extends JFrame {
+public class FormThemNhanVien extends JFrame {
 
 	private JPanel contentPane;
 	DungChung kn = new DungChung();
@@ -45,7 +45,7 @@ public class frmThemNhanVien extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmThemNhanVien frame = new frmThemNhanVien();
+					FormThemNhanVien frame = new FormThemNhanVien();
 					frame.setVisible(true);	
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +57,7 @@ public class frmThemNhanVien extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmThemNhanVien() {
+	public FormThemNhanVien() {
 		setTitle("Thêm Kỹ Năng Nhân Viên");
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -121,7 +121,7 @@ public class frmThemNhanVien extends JFrame {
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "Thêm thành công ");
-						frmThemNhanVien frame = new frmThemNhanVien();
+						FormThemNhanVien frame = new FormThemNhanVien();
 						frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 						frame.dispose();
 						//System.exit(0);

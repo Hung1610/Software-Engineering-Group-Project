@@ -42,7 +42,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.text.html.Option;
 import javax.swing.event.ChangeEvent;
 
-public class FomNhanVienNangCap {
+public class Form_02_NhanVienNangCao {
 
 	JFrame frmQuanLyNhan;
 	private JTextField textField_TenNhanVien;
@@ -57,7 +57,6 @@ public class FomNhanVienNangCap {
 	
 	NhanVienBo bo = new NhanVienBo();
 	ArrayList<NhanVien> nv;
-	private JTextField textField_NgaySinh;
 	private JButton btnRefresh;
 	private JButton btnCapNhat;
 	private JTextField textField_Add_TenNhanVien;
@@ -71,7 +70,7 @@ public class FomNhanVienNangCap {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FomNhanVienNangCap window = new FomNhanVienNangCap();
+					Form_02_NhanVienNangCao window = new Form_02_NhanVienNangCao();
 					window.frmQuanLyNhan.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -83,7 +82,7 @@ public class FomNhanVienNangCap {
 	/**
 	 * Create the application.
 	 */
-	public FomNhanVienNangCap() {
+	public Form_02_NhanVienNangCao() {
 		initialize();
 	}
 
@@ -133,58 +132,52 @@ public class FomNhanVienNangCap {
 		panel.setLayout(null);
 		
 		JLabel label = new JLabel("Mã nhân viên");
-		label.setBounds(127, 13, 81, 22);
+		label.setBounds(41, 13, 81, 22);
 		panel.add(label);
-		comboBox_MaNhanVien.setBounds(248, 13, 81, 22);
+		comboBox_MaNhanVien.setBounds(127, 13, 116, 22);
 		panel.add(comboBox_MaNhanVien);
 		
 		JLabel lblTn = new JLabel("Tên");
-		lblTn.setBounds(127, 75, 56, 16);
+		lblTn.setBounds(41, 47, 56, 16);
 		panel.add(lblTn);
 		
 		textField_TenNhanVien = new JTextField();
 		textField_TenNhanVien.setEditable(false);
-		textField_TenNhanVien.setBounds(248, 72, 116, 22);
+		textField_TenNhanVien.setBounds(127, 44, 116, 22);
 		panel.add(textField_TenNhanVien);
 		textField_TenNhanVien.setColumns(10);
 		
 		lblNgySinh = new JLabel("Ngày sinh");
-		lblNgySinh.setBounds(127, 130, 56, 16);
+		lblNgySinh.setBounds(41, 74, 56, 16);
 		panel.add(lblNgySinh);
 		
-		textField_NgaySinh = new JTextField();
-		textField_NgaySinh.setEditable(false);
-		textField_NgaySinh.setBounds(248, 127, 116, 22);
-		panel.add(textField_NgaySinh);
-		textField_NgaySinh.setColumns(10);
-		
 		JLabel lblNewLabel = new JLabel("Địa chỉ");
-		lblNewLabel.setBounds(127, 186, 56, 16);
+		lblNewLabel.setBounds(41, 239, 56, 16);
 		panel.add(lblNewLabel);
 		
 		textField_DiaChi = new JTextField();
 		textField_DiaChi.setEditable(false);
-		textField_DiaChi.setBounds(248, 183, 116, 22);
+		textField_DiaChi.setBounds(127, 236, 116, 22);
 		panel.add(textField_DiaChi);
 		textField_DiaChi.setColumns(10);
 		
 		lblSdt = new JLabel("Sdt");
-		lblSdt.setBounds(127, 239, 56, 16);
+		lblSdt.setBounds(41, 266, 56, 16);
 		panel.add(lblSdt);
 		
 		textField_Sdt = new JTextField();
 		textField_Sdt.setEditable(false);
-		textField_Sdt.setBounds(248, 236, 116, 22);
+		textField_Sdt.setBounds(127, 263, 116, 22);
 		panel.add(textField_Sdt);
 		textField_Sdt.setColumns(10);
 		
 		lblEmail = new JLabel("Email");
-		lblEmail.setBounds(127, 287, 56, 16);
+		lblEmail.setBounds(41, 293, 56, 16);
 		panel.add(lblEmail);
 		
 		textField_Email = new JTextField();
 		textField_Email.setEditable(false);
-		textField_Email.setBounds(248, 284, 116, 22);
+		textField_Email.setBounds(127, 290, 116, 22);
 		panel.add(textField_Email);
 		textField_Email.setColumns(10);
 		
@@ -208,16 +201,12 @@ public class FomNhanVienNangCap {
 				if(a==JOptionPane.YES_OPTION) {
 					for (NhanVien thongtin : nv) {
 						if(thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
-							//nv.remove(thongtin);
+							//ngay textbox doi thanh calendar.
+							//Date ngay = new SimpleDateFormat("dd/MM/yyyy").parse(textField_NgaySinh.getText());
 							try {
-								Date ngay = new SimpleDateFormat("dd/MM/yyyy").parse(textField_NgaySinh.getText());
-								try {
-									bo.CapNhat(comboBox_MaNhanVien.getSelectedItem().toString(), textField_TenNhanVien.getText(), ngay, textField_DiaChi.getText(), textField_Sdt.getText(), textField_Email.getText().toString());
-								} catch (Exception e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-							} catch (ParseException e) {
+								//ngay textbox doi thanh calendar.
+								//bo.CapNhat(comboBox_MaNhanVien.getSelectedItem().toString(), textField_TenNhanVien.getText(), ngay, textField_DiaChi.getText(), textField_Sdt.getText(), textField_Email.getText().toString());
+							} catch (Exception e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
@@ -238,12 +227,104 @@ public class FomNhanVienNangCap {
 		btnXacNhanThayDoi.setBounds(139, 401, 164, 37);
 		panel.add(btnXacNhanThayDoi);
 		
+		JCalendar calendar_1 = new JCalendar();
+		calendar_1.setBounds(127, 73, 198, 155);
+		panel.add(calendar_1);
+		
+		JPanel panel_1 = new JPanel();
+		tabbedPane.addTab("Them Nhan Vien", null, panel_1, null);
+		panel_1.setLayout(null);
+		
+		JCalendar calendar = new JCalendar();
+		calendar.setBounds(129, 86, 198, 155);
+		panel_1.add(calendar);
+		calendar.setBorder(new LineBorder(new Color(0, 0, 0)));
+		
+		JButton btnThem = new JButton("Them");
+		btnThem.setBounds(298, 395, 149, 47);
+		panel_1.add(btnThem);
+		
+		textField_Add_MaNhanVien = new JTextField();
+		textField_Add_MaNhanVien.setBounds(131, 13, 116, 22);
+		panel_1.add(textField_Add_MaNhanVien);
+		textField_Add_MaNhanVien.setColumns(10);
+		
+		JLabel label_1 = new JLabel("Mã nhân viên");
+		label_1.setBounds(41, 13, 81, 22);
+		panel_1.add(label_1);
+		
+		JLabel label_2 = new JLabel("Tên");
+		label_2.setBounds(41, 47, 56, 16);
+		panel_1.add(label_2);
+		
+		textField_Add_TenNhanVien = new JTextField();
+		textField_Add_TenNhanVien.setColumns(10);
+		textField_Add_TenNhanVien.setBounds(131, 48, 116, 22);
+		panel_1.add(textField_Add_TenNhanVien);
+		
+		JLabel label_3 = new JLabel("Ngày sinh");
+		label_3.setBounds(41, 86, 56, 16);
+		panel_1.add(label_3);
+		
+		JLabel label_4 = new JLabel("Địa chỉ");
+		label_4.setBounds(41, 255, 56, 16);
+		panel_1.add(label_4);
+		
+		textField_Add_DiaChi = new JTextField();
+		textField_Add_DiaChi.setColumns(10);
+		textField_Add_DiaChi.setBounds(129, 252, 116, 22);
+		panel_1.add(textField_Add_DiaChi);
+		
+		JLabel label_5 = new JLabel("Sdt");
+		label_5.setBounds(41, 288, 56, 16);
+		panel_1.add(label_5);
+		
+		textField_Add_Sdt = new JTextField();
+		textField_Add_Sdt.setColumns(10);
+		textField_Add_Sdt.setBounds(127, 285, 116, 22);
+		panel_1.add(textField_Add_Sdt);
+		
+		JLabel label_6 = new JLabel("Email");
+		label_6.setBounds(41, 321, 56, 16);
+		panel_1.add(label_6);
+		
+		textField_Add_Email = new JTextField();
+		textField_Add_Email.setColumns(10);
+		textField_Add_Email.setBounds(127, 318, 116, 22);
+		panel_1.add(textField_Add_Email);
+		
+		//them nhan vien, neu thanh cong thi cac textfield ve rong, them ko thanh cong thi se hien thi thong bao trung ma
+		btnThem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				nv.clear();
+				
+				try {
+					nv = bo.getNhanVien();
+					//nv.g
+					if(bo.Them(textField_Add_MaNhanVien.getText(), textField_Add_TenNhanVien.getText(),calendar.getDate(), textField_Add_DiaChi.getText(), textField_Add_Sdt.getText(), textField_Add_Email.getText())==1) {
+						int a = JOptionPane.showConfirmDialog(new JFrame(), "Them nhan vien thanh cong", "Thông báo", JOptionPane.CLOSED_OPTION);
+					}
+					textField_Add_MaNhanVien.setText("");
+					textField_Add_TenNhanVien.setText("");
+					textField_Add_DiaChi.setText("");
+					textField_Add_Sdt.setText("");
+					textField_Add_Email.setText("");
+					calendar.setDate(new Date());
+
+				} catch (Exception ee) {
+					// TODO Auto-generated catch block
+					//ee.printStackTrace();
+					int a = JOptionPane.showConfirmDialog(new JFrame(), "Mã nhân viên: "+textField_Add_MaNhanVien.getText()+ " này đã bị trùng", "Thông báo", JOptionPane.CLOSED_OPTION);
+				}
+			}
+		});
+		
 		//bam vao nut cap nhat thi se bat dau cap nhat, de dung cap nhat an nut nay them 1 lan nua
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(btnCapNhat.getText().equals("Cap Nhat")) {
 					textField_TenNhanVien.setEditable(true);
-					textField_NgaySinh.setEditable(true);
+					//textField_NgaySinh.setEditable(true);
 					textField_DiaChi.setEditable(true);
 					textField_Sdt.setEditable(true);
 					textField_Email.setEditable(true);
@@ -258,7 +339,7 @@ public class FomNhanVienNangCap {
 					btnRefresh.setEnabled(true);
 					btnXoa.setEnabled(true);
 					textField_TenNhanVien.setEditable(false);
-					textField_NgaySinh.setEditable(false);
+					//textField_NgaySinh.setEditable(false);
 					textField_DiaChi.setEditable(false);
 					textField_Sdt.setEditable(false);
 					textField_Email.setEditable(false);
@@ -313,7 +394,7 @@ public class FomNhanVienNangCap {
 						textField_TenNhanVien.setText(thongtin.getTenNhanVien());
 						SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 				        String ngay = formatter.format(thongtin.getNgaySinh());
-						textField_NgaySinh.setText(ngay.toString());
+						//textField_NgaySinh.setText(ngay.toString());
 						textField_DiaChi.setText(thongtin.getDiaChi());
 						textField_Sdt.setText(thongtin.getSdt());
 						textField_Email.setText(thongtin.getEmail());
@@ -322,95 +403,5 @@ public class FomNhanVienNangCap {
 				}
 			}
 		});
-		
-		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("Them Nhan Vien", null, panel_1, null);
-		panel_1.setLayout(null);
-		
-		JCalendar calendar = new JCalendar();
-		calendar.setBounds(129, 86, 198, 155);
-		panel_1.add(calendar);
-		calendar.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
-		JButton btnThem = new JButton("Them");
-		btnThem.setBounds(126, 392, 97, 25);
-		panel_1.add(btnThem);
-		
-		textField_Add_MaNhanVien = new JTextField();
-		textField_Add_MaNhanVien.setBounds(131, 13, 116, 22);
-		panel_1.add(textField_Add_MaNhanVien);
-		textField_Add_MaNhanVien.setColumns(10);
-		
-		JLabel label_1 = new JLabel("Mã nhân viên");
-		label_1.setBounds(41, 13, 81, 22);
-		panel_1.add(label_1);
-		
-		JLabel label_2 = new JLabel("Tên");
-		label_2.setBounds(41, 47, 56, 16);
-		panel_1.add(label_2);
-		
-		textField_Add_TenNhanVien = new JTextField();
-		textField_Add_TenNhanVien.setColumns(10);
-		textField_Add_TenNhanVien.setBounds(131, 48, 116, 22);
-		panel_1.add(textField_Add_TenNhanVien);
-		
-		JLabel label_3 = new JLabel("Ngày sinh");
-		label_3.setBounds(41, 132, 56, 16);
-		panel_1.add(label_3);
-		
-		JLabel label_4 = new JLabel("Địa chỉ");
-		label_4.setBounds(41, 266, 56, 16);
-		panel_1.add(label_4);
-		
-		textField_Add_DiaChi = new JTextField();
-		textField_Add_DiaChi.setColumns(10);
-		textField_Add_DiaChi.setBounds(129, 263, 116, 22);
-		panel_1.add(textField_Add_DiaChi);
-		
-		JLabel label_5 = new JLabel("Sdt");
-		label_5.setBounds(41, 301, 56, 16);
-		panel_1.add(label_5);
-		
-		textField_Add_Sdt = new JTextField();
-		textField_Add_Sdt.setColumns(10);
-		textField_Add_Sdt.setBounds(129, 298, 116, 22);
-		panel_1.add(textField_Add_Sdt);
-		
-		JLabel label_6 = new JLabel("Email");
-		label_6.setBounds(41, 336, 56, 16);
-		panel_1.add(label_6);
-		
-		textField_Add_Email = new JTextField();
-		textField_Add_Email.setColumns(10);
-		textField_Add_Email.setBounds(129, 333, 116, 22);
-		panel_1.add(textField_Add_Email);
-		
-		//them nhan vien, neu thanh cong thi cac textfield ve rong, them ko thanh cong thi se hien thi thong bao trung ma
-		btnThem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				nv.clear();
-				
-				try {
-					nv = bo.getNhanVien();
-					//nv.g
-					if(bo.Them(textField_Add_MaNhanVien.getText(), textField_Add_TenNhanVien.getText(),calendar.getDate(), textField_Add_DiaChi.getText(), textField_Add_Sdt.getText(), textField_Add_Email.getText())==1) {
-						int a = JOptionPane.showConfirmDialog(new JFrame(), "Them nhan vien thanh cong", "Thông báo", JOptionPane.CLOSED_OPTION);
-					}
-					textField_Add_MaNhanVien.setText("");
-					textField_Add_TenNhanVien.setText("");
-					textField_Add_DiaChi.setText("");
-					textField_Add_Sdt.setText("");
-					textField_Add_Email.setText("");
-					calendar.setDate(new Date());
-
-				} catch (Exception ee) {
-					// TODO Auto-generated catch block
-					//ee.printStackTrace();
-					int a = JOptionPane.showConfirmDialog(new JFrame(), "Mã nhân viên: "+textField_Add_MaNhanVien.getText()+ " này đã bị trùng", "Thông báo", JOptionPane.CLOSED_OPTION);
-				}
-			}
-		});
 	}
-
-	
 }

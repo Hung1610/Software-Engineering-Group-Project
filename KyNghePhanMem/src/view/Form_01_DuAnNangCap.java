@@ -22,7 +22,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class FormDuAnNangCap extends JFrame {
+public class Form_01_DuAnNangCap extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -40,7 +40,7 @@ public class FormDuAnNangCap extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormDuAnNangCap frame = new FormDuAnNangCap();
+					Form_01_DuAnNangCap frame = new Form_01_DuAnNangCap();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class FormDuAnNangCap extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormDuAnNangCap() {
+	public Form_01_DuAnNangCap() {
 		setTitle("Dự Án");
 		addWindowListener(new WindowAdapter() {
 			@Override
