@@ -21,6 +21,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class GiaoDienChinh extends JFrame {
 
@@ -110,6 +113,9 @@ public class GiaoDienChinh extends JFrame {
 		JButton btnNhnVin = new JButton("Nhân Viên");
 		btnNhnVin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				FomNhanVienNangCap nv = new FomNhanVienNangCap();
+				nv.frmQuanLyNhan.setVisible(true);
+				nv.frmQuanLyNhan.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				
 			}
 		});
@@ -119,6 +125,9 @@ public class GiaoDienChinh extends JFrame {
 		JButton btnBoCoCng = new JButton("Báo Cáo Công Việc");
 		btnBoCoCng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			    FormBaoCao bc = new FormBaoCao();
+			    bc.frmInBaoCao.setVisible(true);
+			    bc.frmInBaoCao.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 		});
 		btnBoCoCng.setBounds(433, 87, 149, 25);
@@ -144,6 +153,15 @@ public class GiaoDienChinh extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 5));
+		panel.setBounds(796, 25, 148, 141);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblLogo = new JLabel("LOGO");
+		lblLogo.setBounds(61, 42, 61, 52);
+		panel.add(lblLogo);
 	}
-
 }

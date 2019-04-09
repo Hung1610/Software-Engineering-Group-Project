@@ -37,7 +37,7 @@ import java.awt.event.ActionEvent;
 
 public class FormBaoCao {
 
-	private JFrame frmInBaoCao;
+    JFrame frmInBaoCao;
 	private JTable table;
 	BaoCaoBo bo = new BaoCaoBo();
 	ArrayList<BaoCaoBean> bc;
