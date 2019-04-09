@@ -20,7 +20,13 @@ public class KyNangBo {
 		knlist = getKyNang();
 		return 1;
 	}
-	
+	//lấy thông tin của một kỹ năng
+	public KyNangBean getInfo(String ma,ArrayList<KyNangBean> ds) throws Exception{
+		for(KyNangBean k : ds) 
+			if(k.getMaKyNang().equals(ma)==true) 
+				return k;
+		return null;	
+	}
 	// Lấy toàn bộ kỹ năng có sẵn trong SQL
 	public ArrayList<KyNangBean> getKyNang() throws Exception{
 		knlist=kynangdao.getKyNang();

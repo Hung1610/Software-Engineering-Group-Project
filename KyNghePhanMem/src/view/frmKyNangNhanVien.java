@@ -10,11 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import bean.KyNangBean;
 import bean.KyNangNhanVienBean;
+import bo.KyNangBo;
 import bo.KyNangNhanVienBo;
 import dao.DungChung;
 
 import javax.swing.JTabbedPane;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,17 +26,30 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JTable;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JTextField;
+import java.awt.TextArea;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import javax.swing.JTextArea;
 
 public class frmKyNangNhanVien extends JFrame {
 
 	private JPanel contentPane;
 	
 	private JTable table;
+	private JTextArea textArea = new JTextArea();
+	JComboBox<KyNangBean> comboBox3 = new JComboBox<KyNangBean>();
 	private JScrollPane scrollPane;
 	DefaultTableModel mh = new DefaultTableModel();
 	KyNangNhanVienBo knBo = new KyNangNhanVienBo();
 	DungChung kn = new DungChung();
-	
+	private JTextField txtTenKyNang;
+	KyNangBo kbo = new KyNangBo();
 
 	/**
 	 * Launch the application.
@@ -78,6 +94,14 @@ public class frmKyNangNhanVien extends JFrame {
 						mh.addRow(t);
 					}
 					table.setModel(mh);
+					
+					// add value combobox
+					DefaultComboBoxModel mh2 = new DefaultComboBoxModel();
+					ArrayList<KyNangBean> ds2 = kbo.getKyNang();
+					for(KyNangBean kn : ds2) {
+						mh2.addElement(kn);
+						comboBox3.setModel(mh2);
+					}
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -85,21 +109,21 @@ public class frmKyNangNhanVien extends JFrame {
 			}
 		});
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 753, 409);
+		setBounds(100, 100, 699, 409);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 717, 348);
+		tabbedPane.setBounds(10, 11, 663, 348);
 		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("K\u1EF9 N\u0103ng", null, panel, null);
 		
 		JButton btnNewButton = new JButton("Th\u00EAm k\u1EF9 n\u0103ng");
-		btnNewButton.setBounds(572, 33, 130, 23);
+		btnNewButton.setBounds(518, 33, 130, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frmThemNhanVien frame = new frmThemNhanVien();
@@ -110,7 +134,7 @@ public class frmKyNangNhanVien extends JFrame {
 		panel.add(btnNewButton);
 		
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(10, 67, 692, 242);
+		tabbedPane_1.setBounds(10, 67, 648, 242);
 		panel.add(tabbedPane_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -122,5 +146,63 @@ public class frmKyNangNhanVien extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Ch\u1EC9nh s\u1EEDa k\u1EF9 n\u0103ng", null, panel_1, null);
+		panel_1.setLayout(null);
+		comboBox3.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				try {
+					ArrayList<KyNangBean> ds2 = kbo.getKyNang();
+					KyNangBean kn = (KyNangBean)comboBox3.getSelectedItem();
+					KyNangBean kyNang = kbo.getInfo(kn.getMaKyNang(), ds2);
+					txtTenKyNang.setText(kyNang.getTenKyNang());
+					textArea.setText(kyNang.getChiTiet());
+				} catch (Exception ee) {
+					ee.printStackTrace();
+				}
+			}
+		});
+		
+		//JComboBox comboBox3 = new JComboBox();
+		comboBox3.setBounds(148, 32, 186, 20);
+		panel_1.add(comboBox3);
+		
+		JLabel lblChnKNng = new JLabel("Chọn kỹ năng");
+		lblChnKNng.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblChnKNng.setBounds(28, 31, 95, 20);
+		panel_1.add(lblChnKNng);
+		
+		txtTenKyNang = new JTextField();
+		txtTenKyNang.setBounds(148, 91, 380, 20);
+		panel_1.add(txtTenKyNang);
+		txtTenKyNang.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Tên kỹ năng");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setBounds(28, 93, 83, 14);
+		panel_1.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Mô tả");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_1.setBounds(40, 158, 83, 14);
+		panel_1.add(lblNewLabel_1);
+		
+		JButton btnLuu = new JButton("Lưu");
+		btnLuu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					KyNangBean kn = (KyNangBean)comboBox3.getSelectedItem();
+					kbo.CapNhat(kn.getMaKyNang(), txtTenKyNang.getText(), textArea.getText());
+					JOptionPane.showMessageDialog(null, "Cập nhật thành công !!");;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		btnLuu.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnLuu.setBounds(148, 286, 89, 23);
+		panel_1.add(btnLuu);
+		
+		
+		textArea.setBounds(148, 154, 380, 90);
+		panel_1.add(textArea);
 	}
 }
