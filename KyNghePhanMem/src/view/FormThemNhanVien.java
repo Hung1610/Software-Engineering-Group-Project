@@ -38,21 +38,7 @@ public class FormThemNhanVien extends JFrame {
 	KyNangNhanVienBo kbo = new KyNangNhanVienBo();
 	JComboBox<NhanVien> comboBox = new JComboBox<NhanVien>();
 	JComboBox<KyNangBean> comboBox1 = new JComboBox<KyNangBean>();
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FormThemNhanVien frame = new FormThemNhanVien();
-					frame.setVisible(true);	
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.

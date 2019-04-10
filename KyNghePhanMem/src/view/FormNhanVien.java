@@ -55,21 +55,7 @@ public class FormNhanVien {
 	private JButton btnRefresh;
 	private JButton btnCapNhat;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FormNhanVien window = new FormNhanVien();
-					window.frmQuanLyNhan.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.

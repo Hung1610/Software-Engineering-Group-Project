@@ -51,21 +51,7 @@ public class Form_03_KyNangNhanVien extends JFrame {
 	private JTextField txtTenKyNang;
 	KyNangBo kbo = new KyNangBo();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Form_03_KyNangNhanVien frame = new Form_03_KyNangNhanVien();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
