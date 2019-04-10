@@ -95,6 +95,7 @@ public class FormNhanVien {
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					System.out.println(e1.getMessage());
 				}
 
 				// Hien thi combo box MaNhanVien
