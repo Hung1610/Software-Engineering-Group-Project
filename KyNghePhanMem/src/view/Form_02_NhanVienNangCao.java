@@ -173,14 +173,12 @@ public class Form_02_NhanVienNangCao {
 		textField_Email.setBounds(127, 290, 164, 22);
 		panel.add(textField_Email);
 		textField_Email.setColumns(10);
-<<<<<<< HEAD
 
-		JButton btnXoa = new JButton("Xoa");
-=======
+
 		
 		JButton btnXoa = new JButton("Xóa");
 		btnXoa.setIcon(new ImageIcon("images/delete.png"));
->>>>>>> 0e500c5bfda379f2ab5e1cacc83a81bc8312ec0e
+
 		btnXoa.setBounds(12, 363, 97, 25);
 		panel.add(btnXoa);
 
@@ -188,16 +186,13 @@ public class Form_02_NhanVienNangCao {
 		btnRefresh.setIcon(new ImageIcon("images/refresh.png"));
 		btnRefresh.setBounds(323, 363, 122, 25);
 		panel.add(btnRefresh);
-<<<<<<< HEAD
+
 
 		btnCapNhat = new JButton("Cap Nhat");
 		btnCapNhat.setBounds(175, 363, 97, 25);
 		panel.add(btnCapNhat);
 
-		// Neu dong y thay doi thi bam nut xac nhan thay doi
-		JButton btnXacNhanThayDoi = new JButton("Xac Nhan Thay Doi");
-=======
-		
+
 		btnCapNhat = new JButton("Cập Nhật");
 		btnCapNhat.setIcon(new ImageIcon("images/update.png"));
 		btnCapNhat.setBounds(162, 363, 122, 25);
@@ -206,7 +201,7 @@ public class Form_02_NhanVienNangCao {
 		//Neu dong y thay doi thi bam nut xac nhan thay doi
 		JButton btnXacNhanThayDoi = new JButton("Xác Nhận Thay Đổi");
 		btnXacNhanThayDoi.setIcon(new ImageIcon("images/tick.png"));
->>>>>>> 0e500c5bfda379f2ab5e1cacc83a81bc8312ec0e
+
 		btnXacNhanThayDoi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int a = JOptionPane.showConfirmDialog(new JFrame(),
@@ -255,14 +250,13 @@ public class Form_02_NhanVienNangCao {
 		calendar.setBounds(129, 86, 198, 155);
 		panel_1.add(calendar);
 		calendar.setBorder(new LineBorder(new Color(0, 0, 0)));
-<<<<<<< HEAD
 
-		JButton btnThem = new JButton("Them");
-=======
+
+
 		
 		JButton btnThem = new JButton("Thêm");
 		btnThem.setIcon(new ImageIcon("images/add.png"));
->>>>>>> 0e500c5bfda379f2ab5e1cacc83a81bc8312ec0e
+
 		btnThem.setBounds(298, 395, 149, 47);
 		panel_1.add(btnThem);
 
