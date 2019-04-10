@@ -247,14 +247,21 @@ public class FormDuAnNangCap extends JFrame {
 		btnXn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for(DuAnBean thongtin : da) {
-					if(thongtin.getMaDuAn().equals(comboBox.getSelectedItem().toString())) {
-						try {
-							SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-							bo.CapNhat(comboBox.getSelectedItem().toString(), txtten.getText(), fm.parse(txtnbd.getText()), fm.parse(txtnkt.getText()), txttt.getText());
-						} catch (Exception e2) {
-							// TODO: handle exception
+					int a = JOptionPane.showConfirmDialog(new JFrame(),
+							"Bạn có chắc muốn cập nhật dự án này ko, thao tác này ko thể hoàn tác", "Xác nhận cập nhật",
+							JOptionPane.YES_NO_OPTION);
+					if (a == JOptionPane.YES_OPTION) {
+						if(thongtin.getMaDuAn().equals(comboBox.getSelectedItem().toString())) {
+							try {
+								SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+								bo.CapNhat(comboBox.getSelectedItem().toString(), txtten.getText(), fm.parse(txtnbd.getText()), fm.parse(txtnkt.getText()), txttt.getText());
+							} catch (Exception e2) {
+								// TODO: handle exception
+							}
+							break;
 						}
 					}
+					
 				}
 			}
 		});
