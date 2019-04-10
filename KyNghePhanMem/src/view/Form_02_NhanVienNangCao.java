@@ -177,30 +177,28 @@ public class Form_02_NhanVienNangCao {
 
 		
 		JButton btnXoa = new JButton("Xóa");
-		btnXoa.setIcon(new ImageIcon("images/delete.png"));
+		btnXoa.setIcon(new ImageIcon(getClass().getResource("/images/delete.png")));
 
 		btnXoa.setBounds(12, 363, 97, 25);
 		panel.add(btnXoa);
 
 		btnRefresh = new JButton("Refresh");
-		btnRefresh.setIcon(new ImageIcon("images/refresh.png"));
+		btnRefresh.setIcon(new ImageIcon(getClass().getResource("/images/refresh.png")));
 		btnRefresh.setBounds(323, 363, 122, 25);
 		panel.add(btnRefresh);
 
 
-		btnCapNhat = new JButton("Cap Nhat");
-		btnCapNhat.setBounds(175, 363, 97, 25);
-		panel.add(btnCapNhat);
+	
 
 
-		btnCapNhat = new JButton("Cập Nhật");
-		btnCapNhat.setIcon(new ImageIcon("images/update.png"));
+		btnCapNhat = new JButton("Cập nhật");
+		btnCapNhat.setIcon(new ImageIcon(getClass().getResource("/images/update.png")));
 		btnCapNhat.setBounds(162, 363, 122, 25);
 		panel.add(btnCapNhat);
 		
 		//Neu dong y thay doi thi bam nut xac nhan thay doi
 		JButton btnXacNhanThayDoi = new JButton("Xác Nhận Thay Đổi");
-		btnXacNhanThayDoi.setIcon(new ImageIcon("images/tick.png"));
+		btnXacNhanThayDoi.setIcon(new ImageIcon(getClass().getResource("/images/tick.png")));
 
 		btnXacNhanThayDoi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -255,7 +253,7 @@ public class Form_02_NhanVienNangCao {
 
 		
 		JButton btnThem = new JButton("Thêm");
-		btnThem.setIcon(new ImageIcon("images/add.png"));
+		btnThem.setIcon(new ImageIcon(getClass().getResource("/images/add.png")));
 
 		btnThem.setBounds(298, 395, 149, 47);
 		panel_1.add(btnThem);
@@ -321,7 +319,7 @@ public class Form_02_NhanVienNangCao {
 					if (bo.Them(textField_Add_MaNhanVien.getText(), textField_Add_TenNhanVien.getText(),
 							calendar.getDate(), textField_Add_DiaChi.getText(), textField_Add_Sdt.getText(),
 							textField_Add_Email.getText()) == 1) {
-						int a = JOptionPane.showConfirmDialog(new JFrame(), "Them nhan vien thanh cong", "Thông báo",
+						int a = JOptionPane.showConfirmDialog(new JFrame(), "Thêm nhân viên thành công", "Thông báo",
 								JOptionPane.CLOSED_OPTION);
 					}
 					textField_Add_MaNhanVien.setText("");
@@ -345,7 +343,7 @@ public class Form_02_NhanVienNangCao {
 		// them 1 lan nua
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (btnCapNhat.getText().equals("Cap Nhat")) {
+				if (btnCapNhat.getText().equals("Cập nhật")) {
 					textField_TenNhanVien.setEditable(true);
 					// textField_NgaySinh.setEditable(true);
 					textField_DiaChi.setEditable(true);
@@ -354,9 +352,9 @@ public class Form_02_NhanVienNangCao {
 					btnXacNhanThayDoi.setEnabled(true);
 					btnRefresh.setEnabled(false);
 					btnXoa.setEnabled(false);
-					btnCapNhat.setText("Dung Cap Nhat");
+					btnCapNhat.setText("Dừng cập nhật");
 				} else {
-					btnCapNhat.setText("Cap Nhat");
+					btnCapNhat.setText("Cập nhật");
 					btnXacNhanThayDoi.setEnabled(false);
 					btnRefresh.setEnabled(true);
 					btnXoa.setEnabled(true);
@@ -401,6 +399,7 @@ public class Form_02_NhanVienNangCao {
 							} catch (Exception e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
+								JOptionPane.showMessageDialog(new JFrame(), "Có lỗi xảy ra ko xóa được, liên quan khóa ngoài", "Thông báo", JOptionPane.CLOSED_OPTION);
 							}
 							break;
 						}

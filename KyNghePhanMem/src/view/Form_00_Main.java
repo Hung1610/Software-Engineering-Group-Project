@@ -129,8 +129,8 @@ public class Form_00_Main extends JFrame {
 		btnBoCoCng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    Form_04_BaoCao bc = new Form_04_BaoCao();
-//			    bc.frmInBaoCao.setVisible(true);
-//			    bc.frmInBaoCao.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+			    bc.frmInBaoCao.setVisible(true);
+			    bc.frmInBaoCao.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 		});
 		btnBoCoCng.setBounds(435, 105, 149, 25);
@@ -167,30 +167,30 @@ public class Form_00_Main extends JFrame {
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(32, 11, 128, 119);
 		panel.add(lblLogo);
-		lblLogo.setIcon(new ImageIcon("images/dhkh.png"));
+		lblLogo.setIcon(new ImageIcon(getClass().getResource("/images/dhkh.png")));
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("images/assign1.png"));
+		label.setIcon(new ImageIcon(getClass().getResource("/images/assign1.png")));
 		label.setBounds(49, 25, 97, 51);
 		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon("images/pj1.png"));
+		label_1.setIcon(new ImageIcon(getClass().getResource("/images/pj1.png")));
 		label_1.setBounds(170, 25, 97, 51);
 		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon("images/user1.png"));
+		label_2.setIcon(new ImageIcon(getClass().getResource("/images/user1.png")));
 		label_2.setBounds(303, 25, 97, 51);
 		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon("images/report1.png"));
+		label_3.setIcon(new ImageIcon(getClass().getResource("/images/report1.png")));
 		label_3.setBounds(475, 25, 97, 51);
 		contentPane.add(label_3);
 		
 		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon("images/update1.png"));
+		label_4.setIcon(new ImageIcon(getClass().getResource("/images/update1.png")));
 		label_4.setBounds(638, 25, 97, 51);
 		contentPane.add(label_4);
 	}

@@ -97,7 +97,7 @@ public class FormThemNhanVien extends JFrame {
 		contentPane.add(teaMoTa);
 		
 		JButton btnAdd = new JButton("Thêm");
-		btnAdd.setIcon(new ImageIcon("images/add.png"));
+		btnAdd.setIcon(new ImageIcon(getClass().getResource("/images/add.png")));
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {

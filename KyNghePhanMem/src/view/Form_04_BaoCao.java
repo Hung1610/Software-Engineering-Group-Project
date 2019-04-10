@@ -47,10 +47,6 @@ public class Form_04_BaoCao {
 	ArrayList<String> a = null;
 	JComboBox comboBox = new JComboBox();
 	DefaultTableModel model = new DefaultTableModel();
-
-	/**
-	 * Launch the application.
-	 */
 	
 
 	/**
@@ -131,7 +127,7 @@ public class Form_04_BaoCao {
 		
 		
 		JButton btnInRaFile = new JButton("In ra File");
-		btnInRaFile.setIcon(new ImageIcon("images/print.png"));
+		btnInRaFile.setIcon(new ImageIcon(getClass().getResource("/images/print.png")));
 		btnInRaFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {

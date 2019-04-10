@@ -134,7 +134,7 @@ public class FormDuAn extends JFrame {
 		contentPane.add(txttt);
 		
 		JButton btnThm = new JButton("Th\u00EAm");
-		btnThm.setIcon(new ImageIcon("images/add.png"));
+		btnThm.setIcon(new ImageIcon(getClass().getResource("/images/add.png")));
 		btnThm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -144,12 +144,12 @@ public class FormDuAn extends JFrame {
 		contentPane.add(btnThm);
 		
 		JButton btnCpNht = new JButton("C\u1EADp Nh\u1EADt");
-		btnCpNht.setIcon(new ImageIcon("images/update.png"));
+		btnCpNht.setIcon(new ImageIcon(getClass().getResource("/images/update.png")));
 		btnCpNht.setBounds(205, 337, 110, 25);
 		contentPane.add(btnCpNht);
 		
 		JButton btnXa = new JButton("X\u00F3a");
-		btnXa.setIcon(new ImageIcon("images/delete.png"));
+		btnXa.setIcon(new ImageIcon(getClass().getResource("/images/delete.png")));
 		btnXa.setBounds(365, 337, 97, 25);
 		contentPane.add(btnXa);
 	}

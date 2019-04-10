@@ -99,7 +99,7 @@ public class Form_01_DuAnNangCap extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnThmDn = new JButton("Thêm Dự Án");
-		btnThmDn.setIcon(new ImageIcon("images/add.png"));
+		btnThmDn.setIcon(new ImageIcon(getClass().getResource("/images/add.png")));
 		btnThmDn.setBounds(550, 41, 129, 25);
 		panel.add(btnThmDn);
 		

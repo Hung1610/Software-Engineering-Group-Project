@@ -70,12 +70,12 @@ public class FormLogin extends JFrame {
 		JLabel lblNewLabel = new JLabel("Tên đăng nhập");
 		lblNewLabel.setBounds(25, 30, 132, 31);
 		contentPane.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("images/user.png"));
+		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/images/user.png")));
 		
 		JLabel lblNewLabel_1 = new JLabel("Mật khẩu");
 		lblNewLabel_1.setBounds(25, 85, 106, 34);
 		contentPane.add(lblNewLabel_1);
-		lblNewLabel_1.setIcon(new ImageIcon("images/pass.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
 		
 		txt1 = new JTextField();
 		txt1.setBounds(167, 30, 147, 31);
@@ -85,7 +85,7 @@ public class FormLogin extends JFrame {
 		txt2 = new JPasswordField();
 		txt2.setBounds(167, 85, 147, 34);
 		contentPane.add(txt2);
-		ImageIcon icon=  new ImageIcon("images/login.png");
+		ImageIcon icon=  new ImageIcon(getClass().getResource("/images/login.png"));
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.setIcon(icon);
 		
@@ -107,6 +107,7 @@ public class FormLogin extends JFrame {
 						if (rs.next()) {
 //							JOptionPane.showMessageDialog(null, "Đăng nhập thành công!");
 							Form_00_Main.main(null);
+							dispose();
 						} else {
 							JOptionPane.showMessageDialog(null, "Đăng nhập thất bại!", "Warning!", JOptionPane.ERROR_MESSAGE);
 						}
@@ -121,7 +122,7 @@ public class FormLogin extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		btnThot = new JButton("Thoát");
-		btnThot.setIcon(new ImageIcon("images/delete.png"));
+		btnThot.setIcon(new ImageIcon(getClass().getResource("/images/delete.png")));
 		btnThot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int dialogButton = JOptionPane.YES_NO_OPTION;

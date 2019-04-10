@@ -164,7 +164,7 @@ public class FormNhanVien {
 		frmQuanLyNhan.getContentPane().add(lblNgySinh);
 
 		JButton btnThem = new JButton("Thêm");
-		btnThem.setIcon(new ImageIcon("images/add.png"));
+		btnThem.setIcon(new ImageIcon(getClass().getResource("/images/add.png")));
 		btnThem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				nv.clear();
@@ -207,7 +207,7 @@ public class FormNhanVien {
 		textField_NgaySinh.setColumns(10);
 
 		btnRefresh = new JButton("Refresh");
-		btnRefresh.setIcon(new ImageIcon("images/refresh.png"));
+		btnRefresh.setIcon(new ImageIcon(getClass().getResource("/images/refresh.png")));
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nv.clear();
@@ -227,7 +227,7 @@ public class FormNhanVien {
 		frmQuanLyNhan.getContentPane().add(btnRefresh);
 
 		btnCapNhat = new JButton("Cập Nhật");
-		btnCapNhat.setIcon(new ImageIcon("images/update.png"));
+		btnCapNhat.setIcon(new ImageIcon(getClass().getResource("/images/update.png")));
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int a = JOptionPane.showConfirmDialog(new JFrame(),
