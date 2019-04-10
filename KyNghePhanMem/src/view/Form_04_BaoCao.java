@@ -21,6 +21,7 @@ import dao.DungChung;
 
 import javax.swing.JScrollPane;
 import javax.swing.DefaultCellEditor;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -64,7 +65,7 @@ public class Form_04_BaoCao {
 	 */
 	private void initialize() {
 		frmInBaoCao = new JFrame();
-		frmInBaoCao.setTitle("In Bao Cao");
+		frmInBaoCao.setTitle("In Báo Cáo");
 		frmInBaoCao.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
@@ -120,9 +121,9 @@ public class Form_04_BaoCao {
 		table = new JTable(model);
 		model.addRow(new Object[3]);
 		// Them ten cua colummn
-				model.addColumn("Ma Phan Cong");
-				model.addColumn("So Ngay Da Lam Viec");
-				model.addColumn("Tien Do");
+				model.addColumn("Mã Phân Công");
+				model.addColumn("Số Ngày Đã Làm Việc");
+				model.addColumn("Tiến Độ");
 		//TableModel model = table.getModel();
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(comboBox));
 		scrollPane.setViewportView(table);
@@ -130,6 +131,7 @@ public class Form_04_BaoCao {
 		
 		
 		JButton btnInRaFile = new JButton("In ra File");
+		btnInRaFile.setIcon(new ImageIcon("images/print.png"));
 		btnInRaFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -153,7 +155,7 @@ public class Form_04_BaoCao {
 				}
 			}
 		});
-		btnInRaFile.setBounds(318, 51, 97, 25);
+		btnInRaFile.setBounds(318, 51, 124, 25);
 		frmInBaoCao.getContentPane().add(btnInRaFile);
 		//model.setValueAt("thang", 0, 0);
 		table.getModel().addTableModelListener(new TableModelListener() {

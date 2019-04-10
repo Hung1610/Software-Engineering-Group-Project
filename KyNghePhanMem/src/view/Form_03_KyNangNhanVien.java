@@ -18,6 +18,7 @@ import dao.DungChung;
 
 import javax.swing.JTabbedPane;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -109,7 +110,8 @@ public class Form_03_KyNangNhanVien extends JFrame {
 		tabbedPane.addTab("K\u1EF9 N\u0103ng", null, panel, null);
 		
 		JButton btnNewButton = new JButton("Th\u00EAm k\u1EF9 n\u0103ng");
-		btnNewButton.setBounds(518, 33, 130, 23);
+		btnNewButton.setBounds(497, 33, 151, 23);
+		btnNewButton.setIcon(new ImageIcon("images/add.png"));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FormThemNhanVien frame = new FormThemNhanVien();
@@ -172,6 +174,7 @@ public class Form_03_KyNangNhanVien extends JFrame {
 		panel_1.add(lblNewLabel_1);
 		
 		JButton btnLuu = new JButton("Lưu");
+		btnLuu.setIcon(new ImageIcon("images/save.png"));
 		btnLuu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {

@@ -15,6 +15,7 @@ import dao.DungChung;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -98,7 +99,8 @@ public class Form_01_DuAnNangCap extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnThmDn = new JButton("Thêm Dự Án");
-		btnThmDn.setBounds(566, 41, 113, 25);
+		btnThmDn.setIcon(new ImageIcon("images/add.png"));
+		btnThmDn.setBounds(550, 41, 129, 25);
 		panel.add(btnThmDn);
 		
 		JPanel panel_1 = new JPanel();

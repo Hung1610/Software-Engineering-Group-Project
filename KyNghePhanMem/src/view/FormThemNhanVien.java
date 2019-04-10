@@ -21,6 +21,7 @@ import java.awt.TextArea;
 import java.awt.Font;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.event.WindowAdapter;
@@ -96,6 +97,7 @@ public class FormThemNhanVien extends JFrame {
 		contentPane.add(teaMoTa);
 		
 		JButton btnAdd = new JButton("Thêm");
+		btnAdd.setIcon(new ImageIcon("images/add.png"));
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -119,7 +121,7 @@ public class FormThemNhanVien extends JFrame {
 				
 			}
 		});
-		btnAdd.setBounds(410, 295, 89, 23);
+		btnAdd.setBounds(396, 288, 103, 29);
 		contentPane.add(btnAdd);
 		
 		//JComboBox comboBox = new JComboBox();

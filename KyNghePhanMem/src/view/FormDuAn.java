@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.TextField;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -46,6 +48,7 @@ public class FormDuAn extends JFrame {
 	 * Create the frame.
 	 */
 	public FormDuAn() {
+		setTitle("Dự án");
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -131,19 +134,22 @@ public class FormDuAn extends JFrame {
 		contentPane.add(txttt);
 		
 		JButton btnThm = new JButton("Th\u00EAm");
+		btnThm.setIcon(new ImageIcon("images/add.png"));
 		btnThm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btnThm.setBounds(60, 337, 97, 25);
+		btnThm.setBounds(60, 337, 104, 25);
 		contentPane.add(btnThm);
 		
 		JButton btnCpNht = new JButton("C\u1EADp Nh\u1EADt");
-		btnCpNht.setBounds(205, 337, 97, 25);
+		btnCpNht.setIcon(new ImageIcon("images/update.png"));
+		btnCpNht.setBounds(205, 337, 110, 25);
 		contentPane.add(btnCpNht);
 		
 		JButton btnXa = new JButton("X\u00F3a");
+		btnXa.setIcon(new ImageIcon("images/delete.png"));
 		btnXa.setBounds(365, 337, 97, 25);
 		contentPane.add(btnXa);
 	}

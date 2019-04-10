@@ -19,6 +19,7 @@ import bean.NhanVien;
 import bo.NhanVienBo;
 import dao.DungChung;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -70,7 +71,7 @@ public class FormNhanVien {
 	private void initialize() {
 		frmQuanLyNhan = new JFrame();
 		frmQuanLyNhan.setResizable(false);
-		frmQuanLyNhan.setTitle("Quan Ly Nhan Vien");
+		frmQuanLyNhan.setTitle("Quản Lý Nhân Viên");
 		frmQuanLyNhan.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -162,7 +163,8 @@ public class FormNhanVien {
 		lblNgySinh.setBounds(12, 115, 56, 16);
 		frmQuanLyNhan.getContentPane().add(lblNgySinh);
 
-		JButton btnThem = new JButton("Them");
+		JButton btnThem = new JButton("Thêm");
+		btnThem.setIcon(new ImageIcon("images/add.png"));
 		btnThem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				nv.clear();
@@ -191,7 +193,7 @@ public class FormNhanVien {
 				}
 			}
 		});
-		btnThem.setBounds(12, 400, 97, 25);
+		btnThem.setBounds(28, 400, 101, 25);
 		frmQuanLyNhan.getContentPane().add(btnThem);
 
 		textField_MaNhanVien = new JTextField();
@@ -205,6 +207,7 @@ public class FormNhanVien {
 		textField_NgaySinh.setColumns(10);
 
 		btnRefresh = new JButton("Refresh");
+		btnRefresh.setIcon(new ImageIcon("images/refresh.png"));
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nv.clear();
@@ -220,10 +223,11 @@ public class FormNhanVien {
 				}
 			}
 		});
-		btnRefresh.setBounds(248, 400, 97, 25);
+		btnRefresh.setBounds(281, 400, 108, 25);
 		frmQuanLyNhan.getContentPane().add(btnRefresh);
 
-		btnCapNhat = new JButton("Cap Nhat");
+		btnCapNhat = new JButton("Cập Nhật");
+		btnCapNhat.setIcon(new ImageIcon("images/update.png"));
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int a = JOptionPane.showConfirmDialog(new JFrame(),
@@ -249,7 +253,7 @@ public class FormNhanVien {
 				}
 			}
 		});
-		btnCapNhat.setBounds(139, 400, 97, 25);
+		btnCapNhat.setBounds(155, 400, 116, 25);
 		frmQuanLyNhan.getContentPane().add(btnCapNhat);
 
 		JLabel label = new JLabel("Mã nhân viên");
