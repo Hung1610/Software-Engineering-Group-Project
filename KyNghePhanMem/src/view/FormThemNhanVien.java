@@ -54,10 +54,12 @@ public class FormThemNhanVien extends JFrame {
 					// add value cho combox Nhân viên
 					DefaultComboBoxModel mh = new DefaultComboBoxModel();
 					ArrayList<NhanVien> ds = nv.getNhanVien();
-					for(NhanVien n : nv.getNhanVien()) {
-						mh.addElement(n);
+					int m =ds.size();
+					for(int i=0;i<m;i++) {
+						mh.addElement(ds.get(i));
 						comboBox.setModel(mh);
 					}
+
 					//add value cho combobox Kỹ năng
 					DefaultComboBoxModel mh2 = new DefaultComboBoxModel();
 					for(KyNangBean ki : knbo.getKyNang()) {
