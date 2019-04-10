@@ -35,15 +35,15 @@ public class DuAnDao {
 		return kq;
 	}
 	public int CapNhat(String MaDuAn,String TenDuAn,Date NgayBatDau, Date NgayKetThuc,String TinhTrang) throws Exception {
-		String sql = "update DuAn set MaDuAn=?,TenDuAn=?,NgayBatDau=?,NgayKetThuc=?,TinhTrang=? where MaDuAn=?";
+		String sql = "update DuAn set TenDuAn=?,NgayBatDau=?,NgayKetThuc=?,TinhTrang=? where MaDuAn=?";
 		PreparedStatement cmd = DungChung.cn.prepareStatement(sql);
-		cmd.setString(1, MaDuAn);
-		cmd.setString(2, TenDuAn);
+		cmd.setString(1, TenDuAn);
 		java.sql.Date nbd = new java.sql.Date(NgayBatDau.getTime());
-		cmd.setDate(3, nbd);
+		cmd.setDate(2, nbd);
 		java.sql.Date nkt = new java.sql.Date(NgayKetThuc.getTime());
-		cmd.setDate(4, nkt);
-		cmd.setString(5, TinhTrang);
+		cmd.setDate(3, nkt);
+		cmd.setString(4, TinhTrang);
+		cmd.setString(5, MaDuAn);
 		int kq = cmd.executeUpdate();
 		cmd.close();
 		return kq;
@@ -59,9 +59,7 @@ public class DuAnDao {
 			Date nkt= rs.getDate(4);
 			String tinhtrang= rs.getString(5);
 			DuAnBean duan = new DuAnBean(ma, ten, nbd, nkt, tinhtrang);
-			da.add(duan);
-			
-			
+			da.add(duan);	
 		}
 		rs.close();
 		return da;

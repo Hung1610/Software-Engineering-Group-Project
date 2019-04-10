@@ -107,6 +107,8 @@ public class Form_00_Main extends JFrame {
 				 FormDuAn da = new FormDuAn();
 				 da.setVisible(true);
 				 da.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//				Form_01_DuAnNangCap da = new Form_01_DuAnNangCap();
+//				da.setVisible(true);
 			}
 		});
 		btnDn.setBounds(158, 105, 97, 25);

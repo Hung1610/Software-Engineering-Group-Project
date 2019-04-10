@@ -20,7 +20,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.awt.event.ItemListener;
@@ -245,7 +245,7 @@ public class FormDuAnNangCap extends JFrame {
 		btnRefresh.setBounds(326, 303, 115, 25);
 		panel.add(btnRefresh);
 		btnXn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {		
 				for(DuAnBean thongtin : da) {
 					int a = JOptionPane.showConfirmDialog(new JFrame(),
 							"Bạn có chắc muốn cập nhật dự án này ko, thao tác này ko thể hoàn tác", "Xác nhận cập nhật",
@@ -253,8 +253,12 @@ public class FormDuAnNangCap extends JFrame {
 					if (a == JOptionPane.YES_OPTION) {
 						if(thongtin.getMaDuAn().equals(comboBox.getSelectedItem().toString())) {
 							try {
-								SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-								bo.CapNhat(comboBox.getSelectedItem().toString(), txtten.getText(), fm.parse(txtnbd.getText()), fm.parse(txtnkt.getText()), txttt.getText());
+								SimpleDateFormat fm = new SimpleDateFormat("dd-MM-yyyy");
+								DuAnBo bo = new DuAnBo();
+								System.out.println(txtnbd.getText());
+								Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(txtnbd.getText());
+								Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(txtnkt.getText());
+								bo.CapNhat(comboBox.getSelectedItem().toString(), txtten.getText(), date1, date2, txttt.getText());
 							} catch (Exception e2) {
 								// TODO: handle exception
 							}
