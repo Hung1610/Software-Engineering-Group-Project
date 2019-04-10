@@ -85,7 +85,7 @@ public class Form_02_NhanVienNangCao {
 	private void initialize() {
 		frmQuanLyNhan = new JFrame();
 		frmQuanLyNhan.setResizable(false);
-		frmQuanLyNhan.setTitle("Quan Ly Nhan Vien");
+		frmQuanLyNhan.setTitle("Quản Lý Nhân Viên");
 		frmQuanLyNhan.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -121,7 +121,7 @@ public class Form_02_NhanVienNangCao {
 		frmQuanLyNhan.getContentPane().add(tabbedPane);
 
 		JPanel panel = new JPanel();
-		tabbedPane.addTab("Thong tin", null, panel, null);
+		tabbedPane.addTab("Thông tin", null, panel, null);
 		panel.setLayout(null);
 
 		JLabel label = new JLabel("Mã nhân viên");
@@ -241,7 +241,7 @@ public class Form_02_NhanVienNangCao {
 		panel.add(calendar_1);
 
 		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("Them Nhan Vien", null, panel_1, null);
+		tabbedPane.addTab("Thêm Nhân Viên", null, panel_1, null);
 		panel_1.setLayout(null);
 
 		JCalendar calendar = new JCalendar();
