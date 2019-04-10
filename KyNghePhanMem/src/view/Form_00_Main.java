@@ -12,6 +12,7 @@ import bean.DuAnBean;
 import bo.DuAnBo;
 import dao.DungChung;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -87,6 +88,7 @@ public class Form_00_Main extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1015, 501);
 		contentPane = new JPanel();
+		contentPane.setForeground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -96,7 +98,7 @@ public class Form_00_Main extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnPhnCng.setBounds(34, 87, 97, 25);
+		btnPhnCng.setBounds(34, 105, 97, 25);
 		contentPane.add(btnPhnCng);
 		
 		JButton btnDn = new JButton("Dự Án");
@@ -107,10 +109,11 @@ public class Form_00_Main extends JFrame {
 				 da.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
-		btnDn.setBounds(160, 87, 97, 25);
+		btnDn.setBounds(158, 105, 97, 25);
 		contentPane.add(btnDn);
 		
 		JButton btnNhnVin = new JButton("Nhân Viên");
+		
 		btnNhnVin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Form_02_NhanVienNangCao nv = new Form_02_NhanVienNangCao();
@@ -119,18 +122,18 @@ public class Form_00_Main extends JFrame {
 				
 			}
 		});
-		btnNhnVin.setBounds(293, 87, 97, 25);
+		btnNhnVin.setBounds(291, 105, 97, 25);
 		contentPane.add(btnNhnVin);
 		
 		JButton btnBoCoCng = new JButton("Báo Cáo Công Việc");
 		btnBoCoCng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    Form_04_BaoCao bc = new Form_04_BaoCao();
-			    bc.frmInBaoCao.setVisible(true);
-			    bc.frmInBaoCao.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+//			    bc.frmInBaoCao.setVisible(true);
+//			    bc.frmInBaoCao.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 		});
-		btnBoCoCng.setBounds(433, 87, 149, 25);
+		btnBoCoCng.setBounds(435, 105, 149, 25);
 		contentPane.add(btnBoCoCng);
 		
 		JButton btnCpNhtK = new JButton("Cập Nhật Kỹ Năng");
@@ -141,7 +144,7 @@ public class Form_00_Main extends JFrame {
 				kn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
-		btnCpNhtK.setBounds(625, 87, 135, 25);
+		btnCpNhtK.setBounds(616, 105, 135, 25);
 		contentPane.add(btnCpNhtK);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -155,13 +158,40 @@ public class Form_00_Main extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 5));
+		panel.setForeground(Color.WHITE);
+		panel.setBorder(new LineBorder(null, 3));
 		panel.setBounds(796, 25, 148, 141);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblLogo = new JLabel("LOGO");
-		lblLogo.setBounds(61, 42, 61, 52);
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setBounds(32, 11, 128, 119);
 		panel.add(lblLogo);
+		lblLogo.setIcon(new ImageIcon("images/dhkh.png"));
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("images/assign1.png"));
+		label.setBounds(49, 25, 97, 51);
+		contentPane.add(label);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon("images/pj1.png"));
+		label_1.setBounds(170, 25, 97, 51);
+		contentPane.add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon("images/user1.png"));
+		label_2.setBounds(303, 25, 97, 51);
+		contentPane.add(label_2);
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon("images/report1.png"));
+		label_3.setBounds(475, 25, 97, 51);
+		contentPane.add(label_3);
+		
+		JLabel label_4 = new JLabel("");
+		label_4.setIcon(new ImageIcon("images/update1.png"));
+		label_4.setBounds(638, 25, 97, 51);
+		contentPane.add(label_4);
 	}
 }

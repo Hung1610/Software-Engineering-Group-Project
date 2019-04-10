@@ -19,6 +19,7 @@ import bean.NhanVien;
 import bo.NhanVienBo;
 import dao.DungChung;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -181,20 +182,24 @@ public class Form_02_NhanVienNangCao {
 		panel.add(textField_Email);
 		textField_Email.setColumns(10);
 		
-		JButton btnXoa = new JButton("Xoa");
+		JButton btnXoa = new JButton("Xóa");
+		btnXoa.setIcon(new ImageIcon("images/delete.png"));
 		btnXoa.setBounds(12, 363, 97, 25);
 		panel.add(btnXoa);
 		
 		btnRefresh = new JButton("Refresh");
-		btnRefresh.setBounds(348, 363, 97, 25);
+		btnRefresh.setIcon(new ImageIcon("images/refresh.png"));
+		btnRefresh.setBounds(323, 363, 122, 25);
 		panel.add(btnRefresh);
 		
-		btnCapNhat = new JButton("Cap Nhat");
-		btnCapNhat.setBounds(175, 363, 97, 25);
+		btnCapNhat = new JButton("Cập Nhật");
+		btnCapNhat.setIcon(new ImageIcon("images/update.png"));
+		btnCapNhat.setBounds(162, 363, 122, 25);
 		panel.add(btnCapNhat);
 		
 		//Neu dong y thay doi thi bam nut xac nhan thay doi
-		JButton btnXacNhanThayDoi = new JButton("Xac Nhan Thay Doi");
+		JButton btnXacNhanThayDoi = new JButton("Xác Nhận Thay Đổi");
+		btnXacNhanThayDoi.setIcon(new ImageIcon("images/tick.png"));
 		btnXacNhanThayDoi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int a = JOptionPane.showConfirmDialog(new JFrame(), "Bạn có chắc muốn cập nhật nhân viên này ko, thao tác này ko thể hoàn tác", "Xác nhận cập nhật", JOptionPane.YES_NO_OPTION);
@@ -240,7 +245,8 @@ public class Form_02_NhanVienNangCao {
 		panel_1.add(calendar);
 		calendar.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JButton btnThem = new JButton("Them");
+		JButton btnThem = new JButton("Thêm");
+		btnThem.setIcon(new ImageIcon("images/add.png"));
 		btnThem.setBounds(298, 395, 149, 47);
 		panel_1.add(btnThem);
 		
