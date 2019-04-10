@@ -172,7 +172,7 @@ public class FormDuAnNangCap extends JFrame {
 		btnXoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int a = JOptionPane.showConfirmDialog(new JFrame(),
-						"Bạn có chắc muốn xóa nhân viên này, thao tác này ko thể hoàn tác", "Xác nhận xóa",
+						"Bạn có chắc muốn xóa dự án này, thao tác này ko thể hoàn tác", "Xác nhận xóa",
 						JOptionPane.YES_NO_OPTION);
 				if(a == JOptionPane.YES_OPTION) {
 					for(DuAnBean thongtin : da) {

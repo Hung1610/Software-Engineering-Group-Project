@@ -104,7 +104,7 @@ public class Form_00_Main extends JFrame {
 		JButton btnDn = new JButton("Dự Án");
 		btnDn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 FormDuAn da = new FormDuAn();
+				 FormDuAnNangCap da = new FormDuAnNangCap();
 				 da.setVisible(true);
 				 da.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 //				Form_01_DuAnNangCap da = new Form_01_DuAnNangCap();
