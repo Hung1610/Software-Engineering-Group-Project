@@ -63,16 +63,16 @@ public class Form_02_NhanVienNangCao {
 	private JTextField textField_Add_Sdt;
 	private JTextField textField_Add_Email;
 
-	JCalendar calendar_Them = new JCalendar();
-
 	private JButton btnRefresh;
 	private JButton btnCapNhat;
-	JButton btnXoa = new JButton("Xóa");
-	JButton btnThem = new JButton("Thêm");
-	JButton btnXacNhanThayDoi = new JButton("Xác Nhận Thay Đổi");
+	private JButton btnXoa;
+	private JButton btnThem;
+	private JButton btnXacNhanThayDoi;
 
-	JCalendar calendar_thongtin = new JCalendar();
-	JComboBox comboBox_MaNhanVien = new JComboBox();
+	private JCalendar calendar_Them;
+	private JCalendar calendar_thongtin;
+	
+	private JComboBox comboBox_MaNhanVien;
 
 	NhanVienBo bo = new NhanVienBo();
 	ArrayList<NhanVien> nv;
@@ -131,6 +131,7 @@ public class Form_02_NhanVienNangCao {
 		JLabel label = new JLabel("Mã nhân viên");
 		label.setBounds(41, 13, 81, 22);
 		panel.add(label);
+		comboBox_MaNhanVien = new JComboBox();
 		comboBox_MaNhanVien.setBounds(127, 13, 164, 22);
 		panel.add(comboBox_MaNhanVien);
 
@@ -178,8 +179,8 @@ public class Form_02_NhanVienNangCao {
 		panel.add(textField_Email);
 		textField_Email.setColumns(10);
 
+		btnXoa = new JButton("Xóa");
 		btnXoa.setIcon(hienThiIconForm("/images/delete.png"));
-
 		btnXoa.setBounds(12, 363, 97, 25);
 		panel.add(btnXoa);
 
@@ -193,12 +194,13 @@ public class Form_02_NhanVienNangCao {
 		btnCapNhat.setBounds(127, 363, 184, 25);
 		panel.add(btnCapNhat);
 
+		btnXacNhanThayDoi = new JButton("Xác Nhận Thay Đổi");
 		btnXacNhanThayDoi.setIcon(hienThiIconForm("/images/tick.png"));
-
 		btnXacNhanThayDoi.setEnabled(false);
 		btnXacNhanThayDoi.setBounds(139, 401, 164, 37);
 		panel.add(btnXacNhanThayDoi);
-
+		
+		calendar_thongtin = new JCalendar();
 		calendar_thongtin.setBounds(127, 73, 198, 155);
 		panel.add(calendar_thongtin);
 
@@ -206,12 +208,13 @@ public class Form_02_NhanVienNangCao {
 		tabbedPane.addTab("Thêm Nhân Viên", null, panel_1, null);
 		panel_1.setLayout(null);
 
+		calendar_Them = new JCalendar();
 		calendar_Them.setBounds(129, 86, 198, 155);
 		panel_1.add(calendar_Them);
 		calendar_Them.setBorder(new LineBorder(new Color(0, 0, 0)));
 
+		btnThem = new JButton("Thêm");
 		btnThem.setIcon(hienThiIconForm("/images/add.png"));
-
 		btnThem.setBounds(298, 395, 149, 47);
 		panel_1.add(btnThem);
 
