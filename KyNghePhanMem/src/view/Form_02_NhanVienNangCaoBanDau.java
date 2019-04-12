@@ -45,10 +45,10 @@ import javax.swing.event.ChangeListener;
 import javax.swing.text.html.Option;
 import javax.swing.event.ChangeEvent;
 
-public class Form_02_NhanVienNangCao {
+public class Form_02_NhanVienNangCaoBanDau {
 
 	JFrame frmQuanLyNhanVien;
-
+	
 	private JTextField textField_TenNhanVien;
 	private JTextField textField_DiaChi;
 	private JTextField textField_Sdt;
@@ -56,24 +56,19 @@ public class Form_02_NhanVienNangCao {
 	private JLabel lblSdt;
 	private JLabel lblEmail;
 	private JLabel lblNgySinh;
-
+	
 	private JTextField textField_Add_MaNhanVien;
 	private JTextField textField_Add_TenNhanVien;
 	private JTextField textField_Add_DiaChi;
 	private JTextField textField_Add_Sdt;
 	private JTextField textField_Add_Email;
-
-	JCalendar calendar_Them = new JCalendar();
-
+	
 	private JButton btnRefresh;
 	private JButton btnCapNhat;
-	JButton btnXoa = new JButton("Xóa");
-	JButton btnThem = new JButton("Thêm");
-	JButton btnXacNhanThayDoi = new JButton("Xác Nhận Thay Đổi");
-
-	JCalendar calendar_thongtin = new JCalendar();
+	
+	JCalendar calendar_1 = new JCalendar();
 	JComboBox comboBox_MaNhanVien = new JComboBox();
-
+	
 	NhanVienBo bo = new NhanVienBo();
 	ArrayList<NhanVien> nv;
 
@@ -84,7 +79,7 @@ public class Form_02_NhanVienNangCao {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Form_02_NhanVienNangCao window = new Form_02_NhanVienNangCao();
+					Form_02_NhanVienNangCaoBanDau window = new Form_02_NhanVienNangCaoBanDau();
 					window.frmQuanLyNhanVien.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -96,10 +91,24 @@ public class Form_02_NhanVienNangCao {
 	/**
 	 * Create the application.
 	 */
-	public Form_02_NhanVienNangCao() {
+	public Form_02_NhanVienNangCaoBanDau() {
 		initialize();
 	}
-
+	
+	public void themNhanVienVaoArrayList() {
+		try {
+			nv = bo.getNhanVien();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void hienThiComboBoxMaNV(JComboBox comboBox) {
+		themNhanVienVaoArrayList();
+		for (NhanVien thongtinnhanvien : nv) {
+			comboBox.addItem(thongtinnhanvien.getMaNhanVien());
+		}
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -110,10 +119,27 @@ public class Form_02_NhanVienNangCao {
 		frmQuanLyNhanVien.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
-
-				moKetNoiCSDL();
-
+				// Mo ket noi voi CSDL
+				try {
+					DungChung dc = new DungChung();
+					dc.KetNoi();
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
+//
+//				// Hien thi combo box MaNhanVien
+//				try {
+//					nv = bo.getNhanVien();
+//					//////////////
+//					for (NhanVien thongtin : nv) {
+//						comboBox_MaNhanVien.addItem(thongtin.getMaNhanVien());
+//					}
+//				} catch (Exception e1) {
+//					e1.printStackTrace();
+//				}
 				hienThiComboBoxMaNV(comboBox_MaNhanVien);
+
+				//
 			}
 		});
 		frmQuanLyNhanVien.setBounds(100, 100, 492, 530);
@@ -178,39 +204,86 @@ public class Form_02_NhanVienNangCao {
 		panel.add(textField_Email);
 		textField_Email.setColumns(10);
 
-		btnXoa.setIcon(hienThiIconForm("/images/delete.png"));
+
+		
+		JButton btnXoa = new JButton("Xóa");
+		btnXoa.setIcon(new ImageIcon(getClass().getResource("/images/delete.png")));
 
 		btnXoa.setBounds(12, 363, 97, 25);
 		panel.add(btnXoa);
 
 		btnRefresh = new JButton("Refresh");
-		btnRefresh.setIcon(hienThiIconForm("/images/refresh.png"));
+		btnRefresh.setIcon(new ImageIcon(getClass().getResource("/images/refresh.png")));
 		btnRefresh.setBounds(323, 363, 122, 25);
 		panel.add(btnRefresh);
 
+
+	
+
+
 		btnCapNhat = new JButton("Cập nhật");
-		btnCapNhat.setIcon(hienThiIconForm("/images/update.png"));
-		btnCapNhat.setBounds(127, 363, 184, 25);
+		btnCapNhat.setIcon(new ImageIcon(getClass().getResource("/images/update.png")));
+		btnCapNhat.setBounds(162, 363, 122, 25);
 		panel.add(btnCapNhat);
+		
+		//Neu dong y thay doi thi bam nut xac nhan thay doi
+		JButton btnXacNhanThayDoi = new JButton("Xác Nhận Thay Đổi");
+		btnXacNhanThayDoi.setIcon(new ImageIcon(getClass().getResource("/images/tick.png")));
 
-		btnXacNhanThayDoi.setIcon(hienThiIconForm("/images/tick.png"));
+		btnXacNhanThayDoi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int a = JOptionPane.showConfirmDialog(new JFrame(),
+						"Bạn có chắc muốn cập nhật nhân viên này ko, thao tác này ko thể hoàn tác", "Xác nhận cập nhật",
+						JOptionPane.YES_NO_OPTION);
+				if (a == JOptionPane.YES_OPTION) {
+					for (NhanVien thongtin : nv) {
+						if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
+							// ngay textbox doi thanh calendar.
+							// Date ngay = new
+							// SimpleDateFormat("dd/MM/yyyy").parse(textField_NgaySinh.getText());
+							try {
+								// ngay textbox doi thanh calendar.
+								bo.CapNhat(comboBox_MaNhanVien.getSelectedItem().toString(),
+										textField_TenNhanVien.getText(), calendar_1.getDate(),
+										textField_DiaChi.getText(), textField_Sdt.getText(),
+										textField_Email.getText().toString());
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							try {
 
+							} catch (Exception ee) {
+								// TODO Auto-generated catch block
+								ee.printStackTrace();
+							}
+							break;
+						}
+					}
+				}
+			}
+		});
 		btnXacNhanThayDoi.setEnabled(false);
 		btnXacNhanThayDoi.setBounds(139, 401, 164, 37);
 		panel.add(btnXacNhanThayDoi);
 
-		calendar_thongtin.setBounds(127, 73, 198, 155);
-		panel.add(calendar_thongtin);
+		calendar_1.setBounds(127, 73, 198, 155);
+		panel.add(calendar_1);
 
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Thêm Nhân Viên", null, panel_1, null);
 		panel_1.setLayout(null);
 
-		calendar_Them.setBounds(129, 86, 198, 155);
-		panel_1.add(calendar_Them);
-		calendar_Them.setBorder(new LineBorder(new Color(0, 0, 0)));
+		JCalendar calendar = new JCalendar();
+		calendar.setBounds(129, 86, 198, 155);
+		panel_1.add(calendar);
+		calendar.setBorder(new LineBorder(new Color(0, 0, 0)));
 
-		btnThem.setIcon(hienThiIconForm("/images/add.png"));
+
+
+		
+		JButton btnThem = new JButton("Thêm");
+		btnThem.setIcon(new ImageIcon(getClass().getResource("/images/add.png")));
 
 		btnThem.setBounds(298, 395, 149, 47);
 		panel_1.add(btnThem);
@@ -264,33 +337,104 @@ public class Form_02_NhanVienNangCao {
 		textField_Add_Email.setBounds(127, 318, 179, 22);
 		panel_1.add(textField_Add_Email);
 
+		// them nhan vien, neu thanh cong thi cac textfield ve rong, them ko thanh cong
+		// thi se hien thi thong bao trung ma
+		btnThem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				nv.clear();
+
+				try {
+					nv = bo.getNhanVien();
+					// nv.g
+					if (bo.Them(textField_Add_MaNhanVien.getText(), textField_Add_TenNhanVien.getText(),
+							calendar.getDate(), textField_Add_DiaChi.getText(), textField_Add_Sdt.getText(),
+							textField_Add_Email.getText()) == 1) {
+						int a = JOptionPane.showConfirmDialog(new JFrame(), "Thêm nhân viên thành công", "Thông báo",
+								JOptionPane.CLOSED_OPTION);
+					}
+					textField_Add_MaNhanVien.setText("");
+					textField_Add_TenNhanVien.setText("");
+					textField_Add_DiaChi.setText("");
+					textField_Add_Sdt.setText("");
+					textField_Add_Email.setText("");
+					calendar.setDate(new Date());
+
+				} catch (Exception ee) {
+					// TODO Auto-generated catch block
+					// ee.printStackTrace();
+					int a = JOptionPane.showConfirmDialog(new JFrame(),
+							"Mã nhân viên: " + textField_Add_MaNhanVien.getText() + " này đã bị trùng", "Thông báo",
+							JOptionPane.CLOSED_OPTION);
+				}
+			}
+		});
+
 		// bam vao nut cap nhat thi se bat dau cap nhat, de dung cap nhat an nut nay
 		// them 1 lan nua
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				hienThiNutCapNhat();
+				if (btnCapNhat.getText().equals("Cập nhật")) {
+					textField_TenNhanVien.setEditable(true);
+					// textField_NgaySinh.setEditable(true);
+					textField_DiaChi.setEditable(true);
+					textField_Sdt.setEditable(true);
+					textField_Email.setEditable(true);
+					btnXacNhanThayDoi.setEnabled(true);
+					btnRefresh.setEnabled(false);
+					btnXoa.setEnabled(false);
+					btnCapNhat.setText("Dừng cập nhật");
+				} else {
+					btnCapNhat.setText("Cập nhật");
+					btnXacNhanThayDoi.setEnabled(false);
+					btnRefresh.setEnabled(true);
+					btnXoa.setEnabled(true);
+					textField_TenNhanVien.setEditable(false);
+					// textField_NgaySinh.setEditable(false);
+					textField_DiaChi.setEditable(false);
+					textField_Sdt.setEditable(false);
+					textField_Email.setEditable(false);
+				}
 			}
 		});
 
 		// refresh thong tin nhan vien
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				refresh();
+				nv.clear();
+				comboBox_MaNhanVien.removeAllItems();
+				try {
+					nv = bo.getNhanVien();
+					for (NhanVien thongtin : nv) {
+						comboBox_MaNhanVien.addItem(thongtin.getMaNhanVien());
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 
 		// Xoa 1 nhan vien, co xac nhan xoa
 		btnXoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				xoaNhanVien();
-			}
-		});
-
-		// Neu dong y thay doi thi bam nut xac nhan thay doi
-		btnXacNhanThayDoi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				capNhat();
+				int a = JOptionPane.showConfirmDialog(new JFrame(),
+						"Bạn có chắc muốn xóa nhân viên này, thao tác này ko thể hoàn tác", "Xác nhận xóa",
+						JOptionPane.YES_NO_OPTION);
+				if (a == JOptionPane.YES_OPTION) {
+					for (NhanVien thongtin : nv) {
+						if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
+							// nv.remove(thongtin);
+							try {
+								bo.Xoa(comboBox_MaNhanVien.getSelectedItem().toString());
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+								JOptionPane.showMessageDialog(new JFrame(), "Có lỗi xảy ra ko xóa được, liên quan khóa ngoài", "Thông báo", JOptionPane.CLOSED_OPTION);
+							}
+							break;
+						}
+					}
+				}
 			}
 		});
 
@@ -298,198 +442,20 @@ public class Form_02_NhanVienNangCao {
 		comboBox_MaNhanVien.addItemListener(new ItemListener() {
 			// hien thi thong tin cua nhan vien sau khi chon ma nhan vien tu combo box
 			public void itemStateChanged(ItemEvent arg0) {
-				hienThiTextfield();
-			}
-		});
-
-		// them nhan vien, neu thanh cong thi cac textfield ve rong, them ko thanh cong
-		// thi se hien thi thong bao trung ma
-		btnThem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				themNhanVien();
-			}
-		});
-
-	}
-
-	public void moKetNoiCSDL() {
-		try {
-			DungChung dc = new DungChung();
-			dc.KetNoi();
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-		}
-	}
-
-	public void themNhanVienVaoArrayList() {
-		try {
-			nv = bo.getNhanVien();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void hienThiComboBoxMaNV(JComboBox comboBox) {
-		themNhanVienVaoArrayList();
-		for (NhanVien thongtinnhanvien : nv) {
-			comboBox.addItem(thongtinnhanvien.getMaNhanVien());
-		}
-	}
-
-	// Them nhan vien
-	public void themNhanVien() {
-		nv.clear();
-		try {
-			nv = bo.getNhanVien();
-			if (bo.Them(textField_Add_MaNhanVien.getText(), textField_Add_TenNhanVien.getText(),
-					calendar_Them.getDate(), textField_Add_DiaChi.getText(), textField_Add_Sdt.getText(),
-					textField_Add_Email.getText()) == 1) {
-
-				formThongBao("Thêm ok");
-
-				clearTextfieldThemNhanVien();
-			}
-
-			else {
-				formThongBao("Trùng mã");
-			}
-		} catch (Exception ee) {
-
-		}
-	}
-
-	// Xoa nhan vien
-	public void xoaNhanVien() {
-		int xacnhancapnhat = formThongBao("Xóa");
-		if (xacnhancapnhat == JOptionPane.YES_OPTION) {
-			for (NhanVien thongtin : nv) {
-				if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
-					try {
-						bo.Xoa(comboBox_MaNhanVien.getSelectedItem().toString());
-					} catch (Exception e) {
-
-						formThongBao("Lỗi xóa");
+				for (NhanVien thongtin : nv) {
+					if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
+						textField_TenNhanVien.setText(thongtin.getTenNhanVien());
+						// SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+						// String ngay = formatter.format(thongtin.getNgaySinh());
+						calendar_1.setDate(thongtin.getNgaySinh());
+						// textField_NgaySinh.setText(ngay.toString());
+						textField_DiaChi.setText(thongtin.getDiaChi());
+						textField_Sdt.setText(thongtin.getSdt());
+						textField_Email.setText(thongtin.getEmail());
 					}
-					break;
+
 				}
 			}
-		}
-	}
-
-	// Xu li cho nut xac nhan thay doi
-	public void capNhat() {
-		int kiemtracapnhat = formThongBao("Cập nhật");
-		if (kiemtracapnhat == JOptionPane.YES_OPTION) {
-
-			capNhatThongTinNhanVien();
-		}
-	}
-
-	public void capNhatThongTinNhanVien() {
-		for (NhanVien thongtinnhanvien : nv) {
-			if (thongtinnhanvien.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
-
-				capNhatCSDLNhanVien();
-				break;
-			}
-		}
-	}
-
-	public void capNhatCSDLNhanVien() {
-		try {
-			bo.CapNhat(comboBox_MaNhanVien.getSelectedItem().toString(), textField_TenNhanVien.getText(),
-					calendar_thongtin.getDate(), textField_DiaChi.getText(), textField_Sdt.getText(),
-					textField_Email.getText().toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	// Ket thuc nut xac nhan thay doi
-
-	// Refresh lai thong tin
-	public void refresh() {
-		nv.clear();
-		comboBox_MaNhanVien.removeAllItems();
-		hienThiComboBoxMaNV(comboBox_MaNhanVien);
-	}
-
-	// Hien thi cac form thong bao
-	public int formThongBao(String noidungthongbao) {
-		if (noidungthongbao.equals("Xóa")) {
-			return JOptionPane.showConfirmDialog(new JFrame(),
-					"Bạn có chắc muốn xóa nhân viên này ko, thao tác này ko thể hoàn tác", "Xác nhận xóa",
-					JOptionPane.YES_NO_OPTION);
-		}
-
-		if (noidungthongbao.equals("Cập nhật")) {
-			return JOptionPane.showConfirmDialog(new JFrame(),
-					"Bạn có chắc muốn cập nhật nhân viên này ko, thao tác này ko thể hoàn tác", "Xác nhận cập nhật",
-					JOptionPane.YES_NO_OPTION);
-		}
-		if (noidungthongbao.equals("Lỗi xóa")) {
-			JOptionPane.showMessageDialog(new JFrame(), "Có lỗi xảy ra ko xóa được, liên quan khóa ngoài", "Thông báo",
-					JOptionPane.CLOSED_OPTION);
-		}
-
-		if (noidungthongbao.equals("Thêm ok")) {
-			JOptionPane.showConfirmDialog(new JFrame(), "Thêm nhân viên thành công", "Thông báo",
-					JOptionPane.CLOSED_OPTION);
-		}
-
-		if (noidungthongbao.equals("Trùng mã")) {
-			JOptionPane.showConfirmDialog(new JFrame(),
-					"Mã nhân viên: " + textField_Add_MaNhanVien.getText() + " này đã bị trùng", "Thông báo",
-					JOptionPane.CLOSED_OPTION);
-		}
-		return 1;
-	}
-
-	public void hienThiTextfield() {
-		for (NhanVien thongtin : nv) {
-			if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
-				textField_TenNhanVien.setText(thongtin.getTenNhanVien());
-				calendar_thongtin.setDate(thongtin.getNgaySinh());
-				textField_DiaChi.setText(thongtin.getDiaChi());
-				textField_Sdt.setText(thongtin.getSdt());
-				textField_Email.setText(thongtin.getEmail());
-			}
-		}
-	}
-
-	public void clearTextfieldThemNhanVien() {
-		textField_Add_MaNhanVien.setText("");
-		textField_Add_TenNhanVien.setText("");
-		textField_Add_DiaChi.setText("");
-		textField_Add_Sdt.setText("");
-		textField_Add_Email.setText("");
-		calendar_Them.setDate(new Date());
-	}
-
-	public void hienThiNutCapNhat() {
-		if (btnCapNhat.getText().equals("Cập nhật")) {
-			textField_TenNhanVien.setEditable(true);
-			// textField_NgaySinh.setEditable(true);
-			textField_DiaChi.setEditable(true);
-			textField_Sdt.setEditable(true);
-			textField_Email.setEditable(true);
-			btnXacNhanThayDoi.setEnabled(true);
-			btnRefresh.setEnabled(false);
-			btnXoa.setEnabled(false);
-			btnCapNhat.setText("Dừng cập nhật");
-		} else {
-			btnCapNhat.setText("Cập nhật");
-			btnXacNhanThayDoi.setEnabled(false);
-			btnRefresh.setEnabled(true);
-			btnXoa.setEnabled(true);
-			textField_TenNhanVien.setEditable(false);
-			// textField_NgaySinh.setEditable(false);
-			textField_DiaChi.setEditable(false);
-			textField_Sdt.setEditable(false);
-			textField_Email.setEditable(false);
-		}
-	}
-
-	public ImageIcon hienThiIconForm(String linkIcon) {
-		return new ImageIcon(getClass().getResource(linkIcon));
+		});
 	}
 }

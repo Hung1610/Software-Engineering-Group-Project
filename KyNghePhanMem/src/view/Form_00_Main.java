@@ -119,8 +119,8 @@ public class Form_00_Main extends JFrame {
 		btnNhnVin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Form_02_NhanVienNangCao nv = new Form_02_NhanVienNangCao();
-				nv.frmQuanLyNhan.setVisible(true);
-				nv.frmQuanLyNhan.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				nv.frmQuanLyNhanVien.setVisible(true);
+				nv.frmQuanLyNhanVien.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				
 			}
 		});
