@@ -311,16 +311,22 @@ public class Form_01_DuAnNangCap extends JFrame {
 		panel_1.add(textField_4);
 		btnThm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				da.clear();
-				try {
-					da=bo.getDuAn();
-					SimpleDateFormat fm = new SimpleDateFormat("YYYY-MM-DD");
-				    if(bo.Them(textField.getText(), textField_1.getText(), fm.parse(textField_2.getText()), fm.parse(textField_3.getText()), textField_4.getText())==1) {
-				    	int a = JOptionPane.showConfirmDialog(new JFrame(), "Thêm Dự án thành công", "Thông báo",
-								JOptionPane.CLOSED_OPTION);
+				int a = JOptionPane.showConfirmDialog(new JFrame(),
+						"Bạn có chắc muốn thêm dự án này ko, thao tác này ko thể hoàn tác", "Xác nhận cập nhật",
+						JOptionPane.YES_NO_OPTION);
+				if (a == JOptionPane.YES_OPTION) {
+				    //da.clear();
+				    try {
+					    //da=bo.getDuAn();		
+					    Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(textField_2.getText());
+					    Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(textField_3.getText());				
+				        if(bo.Them(textField.getText(), textField_1.getText(), date1, date2, textField_4.getText())==1) {
+				    	    int b = JOptionPane.showConfirmDialog(new JFrame(), "Thêm Dự án thành công", "Thông báo",
+								    JOptionPane.CLOSED_OPTION);
+				        }
+				    } catch (Exception e2) {
+					    // TODO: handle exception
 				    }
-				} catch (Exception e2) {
-					// TODO: handle exception
 				}
 			}
 			
