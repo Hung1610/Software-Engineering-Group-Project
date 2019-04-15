@@ -2,7 +2,7 @@ package bean;
 
 import java.util.Date;
 
-public class NhanVien {
+public class NhanVienBean {
 	private String MaNhanVien;
 	private String TenNhanVien;
 	private Date NgaySinh;
@@ -45,7 +45,7 @@ public class NhanVien {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public NhanVien(String maNhanVien, String tenNhanVien, Date ngaySinh, String diaChi, String sdt, String email) {
+	public NhanVienBean(String maNhanVien, String tenNhanVien, Date ngaySinh, String diaChi, String sdt, String email) {
 		super();
 		MaNhanVien = maNhanVien;
 		TenNhanVien = tenNhanVien;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bean.DuAnBean;
-import bean.NhanVien;
+import bean.NhanVienBean;
 import dao.DuAnDao;
 
 public class DuAnBo {

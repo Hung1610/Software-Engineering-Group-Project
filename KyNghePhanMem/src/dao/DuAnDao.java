@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bean.DuAnBean;
-import bean.NhanVien;
+import bean.NhanVienBean;
 
 public class DuAnDao {
 	ArrayList<DuAnBean> da = new ArrayList<DuAnBean>();

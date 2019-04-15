@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bean.BaoCaoBean;
-import bean.NhanVien;
+import bean.NhanVienBean;
 
 public class BaoCaoDao {
 	ArrayList<BaoCaoBean> bc = new ArrayList<>();

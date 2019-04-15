@@ -16,7 +16,7 @@ import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JMonthChooser;
 import com.toedter.calendar.JYearChooser;
 
-import bean.NhanVien;
+import bean.NhanVienBean;
 import bo.NhanVienBo;
 import dao.DungChung;
 
@@ -75,7 +75,7 @@ public class Form_02_NhanVienNangCao {
 	private JComboBox comboBox_MaNhanVien;
 
 	NhanVienBo bo = new NhanVienBo();
-	ArrayList<NhanVien> nv;
+	ArrayList<NhanVienBean> nv;
 
 	/**
 	 * Launch the application.
@@ -334,7 +334,7 @@ public class Form_02_NhanVienNangCao {
 
 	public void hienThiComboBoxMaNV(JComboBox comboBox) {
 		themNhanVienVaoArrayList();
-		for (NhanVien thongtinnhanvien : nv) {
+		for (NhanVienBean thongtinnhanvien : nv) {
 			comboBox.addItem(thongtinnhanvien.getMaNhanVien());
 		}
 	}
@@ -365,7 +365,7 @@ public class Form_02_NhanVienNangCao {
 	public void xoaNhanVien() {
 		int xacnhancapnhat = formThongBao("Xóa");
 		if (xacnhancapnhat == JOptionPane.YES_OPTION) {
-			for (NhanVien thongtin : nv) {
+			for (NhanVienBean thongtin : nv) {
 				if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
 					try {
 						bo.Xoa(comboBox_MaNhanVien.getSelectedItem().toString());
@@ -389,7 +389,7 @@ public class Form_02_NhanVienNangCao {
 	}
 
 	public void capNhatThongTinNhanVien() {
-		for (NhanVien thongtinnhanvien : nv) {
+		for (NhanVienBean thongtinnhanvien : nv) {
 			if (thongtinnhanvien.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
 
 				capNhatCSDLNhanVien();
@@ -448,7 +448,7 @@ public class Form_02_NhanVienNangCao {
 	}
 
 	public void hienThiTextfield() {
-		for (NhanVien thongtin : nv) {
+		for (NhanVienBean thongtin : nv) {
 			if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
 				textField_TenNhanVien.setText(thongtin.getTenNhanVien());
 				calendar_thongtin.setDate(thongtin.getNgaySinh());

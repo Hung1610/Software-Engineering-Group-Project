@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import bean.DuAnBean;
-import bean.NhanVien;
+import bean.NhanVienBean;
 import bo.DuAnBo;
 import dao.DungChung;
 

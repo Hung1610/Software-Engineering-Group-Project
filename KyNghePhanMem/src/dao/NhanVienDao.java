@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import dao.DungChung;
-import bean.NhanVien;
+import bean.NhanVienBean;
 
 public class NhanVienDao {
-	ArrayList<NhanVien> nv = new ArrayList<>();
+	ArrayList<NhanVienBean> nv = new ArrayList<>();
 	
 	public int Them(String MaNhanVien, String TenNhanVien, Date NgaySinh, String DiaChi, String Sdt, String Email)
 			throws Exception {
@@ -27,7 +27,7 @@ public class NhanVienDao {
 		return kq;
 	}
 	
-	public ArrayList<NhanVien> getNhanVien() throws Exception {
+	public ArrayList<NhanVienBean> getNhanVien() throws Exception {
 		String sql = "select * from NhanVien";
 		PreparedStatement cmd = DungChung.cn.prepareStatement(sql);
 		ResultSet rs=cmd.executeQuery();
@@ -38,7 +38,7 @@ public class NhanVienDao {
 			String dc= rs.getString(4);
 			String sdt= rs.getString(5);
 			String email= rs.getString(6);
-			NhanVien nhanvien= new NhanVien(ma, ten, ngaysinh, dc, sdt, email);
+			NhanVienBean nhanvien= new NhanVienBean(ma, ten, ngaysinh, dc, sdt, email);
 			nv.add(nhanvien);
 		}
 		rs.close();

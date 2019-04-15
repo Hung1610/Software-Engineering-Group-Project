@@ -120,12 +120,12 @@ public class Form_04_BaoCao {
 
 			}
 		});
-		frmInBaoCao.setBounds(100, 100, 787, 507);
+		frmInBaoCao.setBounds(100, 100, 555, 344);
 		frmInBaoCao.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmInBaoCao.getContentPane().setLayout(null);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(133, 105, 546, 290);
+		tabbedPane.setBounds(0, 23, 546, 290);
 		frmInBaoCao.getContentPane().add(tabbedPane);
 		
 		tabbedPane.addTab("Thong tin phan cong", null, scrollPane, null);
@@ -166,7 +166,7 @@ public class Form_04_BaoCao {
 				}
 			}
 		});
-		btnInRaFile.setBounds(318, 51, 124, 25);
+		btnInRaFile.setBounds(197, 0, 124, 25);
 		frmInBaoCao.getContentPane().add(btnInRaFile);
 		//model.setValueAt("thang", 0, 0);
 		table.getModel().addTableModelListener(new TableModelListener() {

@@ -20,6 +20,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JLabel;
@@ -41,6 +43,14 @@ public class Form_00_Main extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				// Set Look and Feel.
+				try {
+					  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch(Exception e) {
+					  System.out.println("Error setting native LookAndFeel: " + e);
+				}
+				//
+				
 				try {
 					Form_00_Main frame = new Form_00_Main();
 					frame.setVisible(true);
@@ -94,24 +104,28 @@ public class Form_00_Main extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnPhnCng = new JButton("Phân Công");
+		btnPhnCng.setBackground(Color.WHITE);
 		btnPhnCng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Form_05_PhanCong pc = new Form_05_PhanCong();
+				pc.frame.setVisible(true);
+				pc.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
-		btnPhnCng.setBounds(34, 105, 97, 25);
+		btnPhnCng.setBounds(87, 91, 97, 51);
 		contentPane.add(btnPhnCng);
 		
 		JButton btnDn = new JButton("Dự Án");
 		btnDn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 FormDuAnNangCap da = new FormDuAnNangCap();
+				 Form_01_DuAnNangCap da = new Form_01_DuAnNangCap();
 				 da.setVisible(true);
 				 da.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 //				Form_01_DuAnNangCap da = new Form_01_DuAnNangCap();
 //				da.setVisible(true);
 			}
 		});
-		btnDn.setBounds(158, 105, 97, 25);
+		btnDn.setBounds(211, 91, 97, 51);
 		contentPane.add(btnDn);
 		
 		JButton btnNhnVin = new JButton("Nhân Viên");
@@ -124,7 +138,7 @@ public class Form_00_Main extends JFrame {
 				
 			}
 		});
-		btnNhnVin.setBounds(291, 105, 97, 25);
+		btnNhnVin.setBounds(344, 91, 97, 51);
 		contentPane.add(btnNhnVin);
 		
 		JButton btnBoCoCng = new JButton("Báo Cáo Công Việc");
@@ -135,7 +149,7 @@ public class Form_00_Main extends JFrame {
 			    bc.frmInBaoCao.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 		});
-		btnBoCoCng.setBounds(435, 105, 149, 25);
+		btnBoCoCng.setBounds(488, 91, 149, 51);
 		contentPane.add(btnBoCoCng);
 		
 		JButton btnCpNhtK = new JButton("Cập Nhật Kỹ Năng");
@@ -146,11 +160,11 @@ public class Form_00_Main extends JFrame {
 				kn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
-		btnCpNhtK.setBounds(616, 105, 135, 25);
+		btnCpNhtK.setBounds(669, 91, 135, 51);
 		contentPane.add(btnCpNhtK);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(34, 169, 910, 253);
+		tabbedPane.setBounds(12, 142, 975, 307);
 		contentPane.add(tabbedPane);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -161,39 +175,39 @@ public class Form_00_Main extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.WHITE);
-		panel.setBorder(new LineBorder(null, 3));
-		panel.setBounds(796, 25, 148, 141);
+		panel.setBorder(null);
+		panel.setBounds(839, 13, 148, 141);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(32, 11, 128, 119);
+		lblLogo.setBounds(20, 13, 128, 119);
 		panel.add(lblLogo);
 		lblLogo.setIcon(new ImageIcon(getClass().getResource("/images/dhkh.png")));
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(getClass().getResource("/images/assign1.png")));
-		label.setBounds(49, 25, 97, 51);
+		label.setBounds(87, 13, 97, 65);
 		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(getClass().getResource("/images/pj1.png")));
-		label_1.setBounds(170, 25, 97, 51);
+		label_1.setBounds(208, 13, 97, 65);
 		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon(getClass().getResource("/images/user1.png")));
-		label_2.setBounds(303, 25, 97, 51);
+		label_2.setBounds(341, 13, 97, 65);
 		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("");
 		label_3.setIcon(new ImageIcon(getClass().getResource("/images/report1.png")));
-		label_3.setBounds(475, 25, 97, 51);
+		label_3.setBounds(513, 13, 97, 65);
 		contentPane.add(label_3);
 		
 		JLabel label_4 = new JLabel("");
 		label_4.setIcon(new ImageIcon(getClass().getResource("/images/update1.png")));
-		label_4.setBounds(638, 25, 97, 51);
+		label_4.setBounds(676, 13, 97, 65);
 		contentPane.add(label_4);
 	}
 }

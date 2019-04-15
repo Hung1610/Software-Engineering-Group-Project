@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import bean.KyNangBean;
-import bean.NhanVien;
+import bean.NhanVienBean;
 import bo.KyNangBo;
 import bo.KyNangNhanVienBo;
 import bo.NhanVienBo;
@@ -37,7 +37,7 @@ public class FormThemNhanVien extends JFrame {
 	NhanVienBo nv = new NhanVienBo();
 	KyNangBo knbo = new KyNangBo();
 	KyNangNhanVienBo kbo = new KyNangNhanVienBo();
-	JComboBox<NhanVien> comboBox = new JComboBox<NhanVien>();
+	JComboBox<NhanVienBean> comboBox = new JComboBox<NhanVienBean>();
 	JComboBox<KyNangBean> comboBox1 = new JComboBox<KyNangBean>();
 	
 
@@ -53,7 +53,7 @@ public class FormThemNhanVien extends JFrame {
 					kn.KetNoi();
 					// add value cho combox Nhân viên
 					DefaultComboBoxModel mh = new DefaultComboBoxModel();
-					ArrayList<NhanVien> ds = nv.getNhanVien();
+					ArrayList<NhanVienBean> ds = nv.getNhanVien();
 					int m =ds.size();
 					for(int i=0;i<m;i++) {
 						mh.addElement(ds.get(i));
@@ -103,7 +103,7 @@ public class FormThemNhanVien extends JFrame {
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					NhanVien nv = (NhanVien)comboBox.getSelectedItem();
+					NhanVienBean nv = (NhanVienBean)comboBox.getSelectedItem();
 					KyNangBean kn = (KyNangBean)comboBox1.getSelectedItem();
 					int kt = kbo.themKyNangNhanVien(nv.getMaNhanVien(), kn.getMaKyNang(), teaMoTa.getText());
 					if(kt==0) {

@@ -3,16 +3,16 @@ package bo;
 import java.util.ArrayList;
 import java.util.Date;
 
-import bean.NhanVien;
+import bean.NhanVienBean;
 import dao.NhanVienDao;
 
 public class NhanVienBo {
 	NhanVienDao nhanviendao= new NhanVienDao();
-	public ArrayList<NhanVien> nv;
+	public ArrayList<NhanVienBean> nv;
 	
 	// Thêm nhân viên vào SQL
 	public int Them(String MaNhanVien, String TenNhanVien,Date NgaySinh, String DiaChi, String Sdt, String Email) throws Exception{
-		for(NhanVien thongtin : nv) {
+		for(NhanVienBean thongtin : nv) {
 			if(thongtin.getMaNhanVien().equals(MaNhanVien)) 
 				return 0;
 		}
@@ -22,7 +22,7 @@ public class NhanVienBo {
 	}
 	
 	// Lấy toàn bộ nhân viên từ SQL
-	public ArrayList<NhanVien> getNhanVien() throws Exception{
+	public ArrayList<NhanVienBean> getNhanVien() throws Exception{
 		nv= nhanviendao.getNhanVien();
 		return nv;
 	}

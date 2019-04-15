@@ -16,7 +16,7 @@ import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JMonthChooser;
 import com.toedter.calendar.JYearChooser;
 
-import bean.NhanVien;
+import bean.NhanVienBean;
 import bo.NhanVienBo;
 import dao.DungChung;
 
@@ -70,7 +70,7 @@ public class Form_02_NhanVienNangCaoBanDau {
 	JComboBox comboBox_MaNhanVien = new JComboBox();
 	
 	NhanVienBo bo = new NhanVienBo();
-	ArrayList<NhanVien> nv;
+	ArrayList<NhanVienBean> nv;
 
 	/**
 	 * Launch the application.
@@ -105,7 +105,7 @@ public class Form_02_NhanVienNangCaoBanDau {
 	
 	public void hienThiComboBoxMaNV(JComboBox comboBox) {
 		themNhanVienVaoArrayList();
-		for (NhanVien thongtinnhanvien : nv) {
+		for (NhanVienBean thongtinnhanvien : nv) {
 			comboBox.addItem(thongtinnhanvien.getMaNhanVien());
 		}
 	}
@@ -236,7 +236,7 @@ public class Form_02_NhanVienNangCaoBanDau {
 						"Bạn có chắc muốn cập nhật nhân viên này ko, thao tác này ko thể hoàn tác", "Xác nhận cập nhật",
 						JOptionPane.YES_NO_OPTION);
 				if (a == JOptionPane.YES_OPTION) {
-					for (NhanVien thongtin : nv) {
+					for (NhanVienBean thongtin : nv) {
 						if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
 							// ngay textbox doi thanh calendar.
 							// Date ngay = new
@@ -404,7 +404,7 @@ public class Form_02_NhanVienNangCaoBanDau {
 				comboBox_MaNhanVien.removeAllItems();
 				try {
 					nv = bo.getNhanVien();
-					for (NhanVien thongtin : nv) {
+					for (NhanVienBean thongtin : nv) {
 						comboBox_MaNhanVien.addItem(thongtin.getMaNhanVien());
 					}
 				} catch (Exception e1) {
@@ -421,7 +421,7 @@ public class Form_02_NhanVienNangCaoBanDau {
 						"Bạn có chắc muốn xóa nhân viên này, thao tác này ko thể hoàn tác", "Xác nhận xóa",
 						JOptionPane.YES_NO_OPTION);
 				if (a == JOptionPane.YES_OPTION) {
-					for (NhanVien thongtin : nv) {
+					for (NhanVienBean thongtin : nv) {
 						if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
 							// nv.remove(thongtin);
 							try {
@@ -442,7 +442,7 @@ public class Form_02_NhanVienNangCaoBanDau {
 		comboBox_MaNhanVien.addItemListener(new ItemListener() {
 			// hien thi thong tin cua nhan vien sau khi chon ma nhan vien tu combo box
 			public void itemStateChanged(ItemEvent arg0) {
-				for (NhanVien thongtin : nv) {
+				for (NhanVienBean thongtin : nv) {
 					if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
 						textField_TenNhanVien.setText(thongtin.getTenNhanVien());
 						// SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
