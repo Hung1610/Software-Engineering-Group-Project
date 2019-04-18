@@ -112,7 +112,7 @@ public class Form_00_Main extends JFrame {
 				pc.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
-		btnPhnCng.setBounds(87, 91, 97, 51);
+		btnPhnCng.setBounds(35, 91, 149, 51);
 		contentPane.add(btnPhnCng);
 		
 		JButton btnDn = new JButton("Dự Án");
@@ -125,7 +125,7 @@ public class Form_00_Main extends JFrame {
 //				da.setVisible(true);
 			}
 		});
-		btnDn.setBounds(211, 91, 97, 51);
+		btnDn.setBounds(194, 91, 140, 51);
 		contentPane.add(btnDn);
 		
 		JButton btnNhnVin = new JButton("Nhân Viên");
@@ -138,7 +138,7 @@ public class Form_00_Main extends JFrame {
 				
 			}
 		});
-		btnNhnVin.setBounds(344, 91, 97, 51);
+		btnNhnVin.setBounds(344, 91, 134, 51);
 		contentPane.add(btnNhnVin);
 		
 		JButton btnBoCoCng = new JButton("Báo Cáo Công Việc");
@@ -160,11 +160,11 @@ public class Form_00_Main extends JFrame {
 				kn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
-		btnCpNhtK.setBounds(669, 91, 135, 51);
+		btnCpNhtK.setBounds(647, 91, 135, 51);
 		contentPane.add(btnCpNhtK);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(12, 142, 975, 307);
+		tabbedPane.setBounds(12, 153, 975, 296);
 		contentPane.add(tabbedPane);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -192,22 +192,22 @@ public class Form_00_Main extends JFrame {
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(getClass().getResource("/images/pj1.png")));
-		label_1.setBounds(208, 13, 97, 65);
+		label_1.setBounds(237, 15, 97, 65);
 		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon(getClass().getResource("/images/user1.png")));
-		label_2.setBounds(341, 13, 97, 65);
+		label_2.setBounds(381, 15, 97, 65);
 		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("");
 		label_3.setIcon(new ImageIcon(getClass().getResource("/images/report1.png")));
-		label_3.setBounds(513, 13, 97, 65);
+		label_3.setBounds(540, 15, 97, 65);
 		contentPane.add(label_3);
 		
 		JLabel label_4 = new JLabel("");
 		label_4.setIcon(new ImageIcon(getClass().getResource("/images/update1.png")));
-		label_4.setBounds(676, 13, 97, 65);
+		label_4.setBounds(685, 15, 97, 65);
 		contentPane.add(label_4);
 	}
 }

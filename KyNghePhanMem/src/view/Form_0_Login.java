@@ -20,7 +20,6 @@ import dao.DungChung;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import javax.swing.JPasswordField;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -33,7 +32,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
-public class FormLogin extends JFrame {
+public class Form_0_Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txt1;
@@ -46,19 +45,8 @@ public class FormLogin extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				
-				// Set Look and Feel.
 				try {
-					  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch(Exception e) {
-					  System.out.println("Error setting native LookAndFeel: " + e);
-				}
-				//
-				
-				
-				try {
-					
-					FormLogin frame = new FormLogin();
+					Form_0_Login frame = new Form_0_Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -70,7 +58,7 @@ public class FormLogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormLogin() {
+	public Form_0_Login() {
 		setTitle("Ðăng nhập ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 415, 300);
