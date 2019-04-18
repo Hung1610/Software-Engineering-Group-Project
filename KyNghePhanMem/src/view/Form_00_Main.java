@@ -65,6 +65,7 @@ public class Form_00_Main extends JFrame {
 	 * Create the frame.
 	 */
 	public Form_00_Main() {
+		setResizable(false);
 		setTitle("Menu");
 		addWindowListener(new WindowAdapter() {
 			@Override
