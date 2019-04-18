@@ -20,6 +20,7 @@ import dao.DungChung;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.JPasswordField;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -44,7 +45,13 @@ public class Form_0_Login extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			public void run() {// Set Look and Feel.
+				try {
+					  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch(Exception e) {
+					  System.out.println("Error setting native LookAndFeel: " + e);
+				}
+				//
 				try {
 					Form_0_Login frame = new Form_0_Login();
 					frame.setVisible(true);
