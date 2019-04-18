@@ -383,21 +383,26 @@ public class Form_02_NhanVienNangCao {
 	public void capNhat() {
 		int kiemtracapnhat = formThongBao("Cập nhật");
 		if (kiemtracapnhat == JOptionPane.YES_OPTION) {
-
-			capNhatThongTinNhanVien();
+			try {
+				bo.CapNhat(comboBox_MaNhanVien.getSelectedItem().toString(), textField_TenNhanVien.getText(),
+						calendar_thongtin.getDate(), textField_DiaChi.getText(), textField_Sdt.getText(),
+						textField_Email.getText().toString());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
-
+	/*
 	public void capNhatThongTinNhanVien() {
 		for (NhanVienBean thongtinnhanvien : nv) {
 			if (thongtinnhanvien.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {
-
 				capNhatCSDLNhanVien();
 				break;
 			}
 		}
 	}
-
+	//
 	public void capNhatCSDLNhanVien() {
 		try {
 			bo.CapNhat(comboBox_MaNhanVien.getSelectedItem().toString(), textField_TenNhanVien.getText(),
@@ -407,6 +412,7 @@ public class Form_02_NhanVienNangCao {
 			e.printStackTrace();
 		}
 	}
+	*/
 	// Ket thuc nut xac nhan thay doi
 
 	// Refresh lai thong tin

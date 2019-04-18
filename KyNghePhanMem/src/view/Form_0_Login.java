@@ -32,7 +32,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
-public class FormLogin extends JFrame {
+public class Form_0_Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txt1;
@@ -46,7 +46,7 @@ public class FormLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormLogin frame = new FormLogin();
+					Form_0_Login frame = new Form_0_Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +58,7 @@ public class FormLogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormLogin() {
+	public Form_0_Login() {
 		setTitle("Ðăng nhập ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 415, 300);
