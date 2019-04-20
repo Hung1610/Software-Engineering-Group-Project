@@ -20,6 +20,7 @@ import dao.DungChung;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.JPasswordField;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -31,6 +32,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class Form_0_Login extends JFrame {
 
@@ -45,6 +47,14 @@ public class Form_0_Login extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				// Set Look and Feel.
+				try {
+					  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch(Exception e) {
+					  System.out.println("Error setting native LookAndFeel: " + e);
+				}
+				//
+				
 				try {
 					Form_0_Login frame = new Form_0_Login();
 					frame.setVisible(true);
@@ -59,16 +69,17 @@ public class Form_0_Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Form_0_Login() {
+		setResizable(false);
 		setTitle("Ðăng nhập ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 415, 300);
+		setBounds(100, 100, 260, 275);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Tên đăng nhập");
-		lblNewLabel.setBounds(25, 30, 132, 31);
+		lblNewLabel.setBounds(25, 11, 132, 31);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/images/user.png")));
 		
@@ -78,15 +89,16 @@ public class Form_0_Login extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
 		
 		txt1 = new JTextField();
-		txt1.setBounds(167, 30, 147, 31);
+		txt1.setBounds(48, 43, 147, 31);
 		contentPane.add(txt1);
 		txt1.setColumns(10);
 		
 		txt2 = new JPasswordField();
-		txt2.setBounds(167, 85, 147, 34);
+		txt2.setBounds(48, 119, 147, 34);
 		contentPane.add(txt2);
 		ImageIcon icon=  new ImageIcon(getClass().getResource("/images/login.png"));
 		JButton btnNewButton = new JButton("Login");
+		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setIcon(icon);
 		
 		btnNewButton.addActionListener(new ActionListener() {
@@ -118,10 +130,11 @@ public class Form_0_Login extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(167, 138, 94, 31);
+		btnNewButton.setBounds(26, 182, 94, 31);
 		contentPane.add(btnNewButton);
 		
 		btnThot = new JButton("Thoát");
+		btnThot.setBackground(Color.WHITE);
 		btnThot.setIcon(new ImageIcon(getClass().getResource("/images/delete.png")));
 		btnThot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -133,7 +146,7 @@ public class Form_0_Login extends JFrame {
                 }
 			}
 		});
-		btnThot.setBounds(167, 181, 94, 31);
+		btnThot.setBounds(117, 182, 94, 31);
 		contentPane.add(btnThot);
 	}
 }
