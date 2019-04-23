@@ -158,6 +158,7 @@ public class Form_03_KyNangNhanVien extends JFrame {
 				try {
 					KyNangNhanVienBo ktbo = new KyNangNhanVienBo();
 					mh = new DefaultTableModel();
+					// thêm cột cho bảng
 					mh.addColumn("Mã nhân viên");
 					mh.addColumn("Tên nhân viên");
 					mh.addColumn("Tên kỹ năng");
@@ -166,7 +167,7 @@ public class Form_03_KyNangNhanVien extends JFrame {
 					((DefaultTableModel)table.getModel()).setRowCount(0);
 					ArrayList<KyNangNhanVienBean>  ds2 = new ArrayList<KyNangNhanVienBean>();
 					ds2 = ktbo.getListSkill();
-					System.out.println(ds2.size());
+					//thiết lập lại mô hình
 					for(KyNangNhanVienBean kn : ds2) {
 						Object[] t = new Object[4];
 						t[0] = kn.getMaNV();

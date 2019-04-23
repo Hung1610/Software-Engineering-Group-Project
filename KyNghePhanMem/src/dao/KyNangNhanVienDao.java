@@ -8,7 +8,7 @@ import bean.KyNangNhanVienBean;
 
 public class KyNangNhanVienDao {
 	public ArrayList<KyNangNhanVienBean> listSkill = new ArrayList<KyNangNhanVienBean>();
-	
+	//lấy danh sách kỹ năng của nhân viên
 	public ArrayList<KyNangNhanVienBean> getListSkill() throws Exception
 	{
 		String sql = "select * from KyNangNhanVien";
@@ -25,6 +25,7 @@ public class KyNangNhanVienDao {
 		rs.close();
 		return listSkill;
 	}
+	//thêm kỹ năng cho nhân viên
 	public void themKyNangNhanVien(String manv,String makn,String motakhac) throws Exception{
 		String sql = "insert into KyNangNhanVien values(?,?,?)";
 		PreparedStatement cmd = DungChung.cn.prepareStatement(sql);

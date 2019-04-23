@@ -14,12 +14,14 @@ public class KyNangNhanVienBo {
 	KyNangNhanVienDao kndao = new KyNangNhanVienDao();
 	NhanVienDao nvDao = new NhanVienDao();
 	ThongTinKyNangDao knDao = new ThongTinKyNangDao();
+	// lấy danh sách nhân viên
 	public ArrayList<KyNangNhanVienBean> getListSkill() throws Exception
 	{
 		
 		ds = kndao.getListSkill();
 		return ds;
 	}
+	// thêm kỹ năng mới cho nhân viên
 	public int themKyNangNhanVien(String manv,String makn,String motakhac) throws Exception{
 		for(KyNangNhanVienBean k : kndao.getListSkill()) {
 			if(k.getMaNV().equals(manv) == true && k.getMaKyNang().equals(makn)==true)
@@ -28,6 +30,7 @@ public class KyNangNhanVienBo {
 		kndao.themKyNangNhanVien(manv, makn, motakhac);
 		return 1;
 	}
+	// lấy tên  nhân viên theo mã nhân viên
 	public String getTenNhanVien(String ma) throws Exception
 	{
 		ArrayList<NhanVienBean> dsNhanVien = nvDao.getNhanVien();
@@ -40,6 +43,7 @@ public class KyNangNhanVienBo {
 		}
 		return null;
 	}
+	// lấy tên kỹ năng theo mã kỹ năng
 	public String getTenKyNang(String ma) throws Exception
 	{
 		ArrayList<KyNangBean> dsKyNang = knDao.getKyNang();
