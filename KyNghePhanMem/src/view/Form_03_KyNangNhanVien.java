@@ -46,7 +46,7 @@ public class Form_03_KyNangNhanVien extends JFrame {
 	private JTextArea textArea = new JTextArea();
 	JComboBox<KyNangBean> comboBox3 = new JComboBox<KyNangBean>();
 	private JScrollPane scrollPane;
-	DefaultTableModel mh = new DefaultTableModel();
+	DefaultTableModel mh;
 	KyNangNhanVienBo knBo = new KyNangNhanVienBo();
 	DungChung kn = new DungChung();
 	private JTextField txtTenKyNang;
@@ -80,20 +80,23 @@ public class Form_03_KyNangNhanVien extends JFrame {
 			
 			@Override
 			public void windowOpened(WindowEvent arg0) {
-				
+				mh= new DefaultTableModel();
 				// add colum to table
 				mh.addColumn("Mã nhân viên");
-				mh.addColumn("Mã kỹ năng");
+				mh.addColumn("Tên nhân viên");
+				mh.addColumn("Tên kỹ năng");
 				mh.addColumn("Mô tả khác");
 				try {
 					kn.KetNoi();
 					ArrayList<KyNangNhanVienBean>  ds = knBo.getListSkill();
+					System.out.println(ds.size());
 					((DefaultTableModel)table.getModel()).setRowCount(0);
 					for(KyNangNhanVienBean kn : ds) {
-						Object[] t = new Object[3];
+						Object[] t = new Object[4];
 						t[0] = kn.getMaNV();
-						t[1] = kn.getMaKyNang();
-						t[2] = kn.getMoTaKhac();
+						t[1] = knBo.getTenNhanVien(kn.getMaNV());
+						t[2] = knBo.getTenKyNang(kn.getMaKyNang());
+						t[3] = kn.getMoTaKhac();
 						mh.addRow(t);
 					}
 					table.setModel(mh);
@@ -141,12 +144,46 @@ public class Form_03_KyNangNhanVien extends JFrame {
 		tabbedPane_1.setBounds(10, 67, 648, 242);
 		panel.add(tabbedPane_1);
 		
+		
 		JScrollPane scrollPane = new JScrollPane();
 		tabbedPane_1.addTab("Danh sách kỹ năng", null, scrollPane, null);
 		
 		table = new JTable();
 		scrollPane.setRowHeaderView(table);
 		scrollPane.setViewportView(table);
+		
+		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					KyNangNhanVienBo ktbo = new KyNangNhanVienBo();
+					mh = new DefaultTableModel();
+					mh.addColumn("Mã nhân viên");
+					mh.addColumn("Tên nhân viên");
+					mh.addColumn("Tên kỹ năng");
+					mh.addColumn("Mô tả khác");
+					// xóa dữ liệu của bảng
+					((DefaultTableModel)table.getModel()).setRowCount(0);
+					ArrayList<KyNangNhanVienBean>  ds2 = new ArrayList<KyNangNhanVienBean>();
+					ds2 = ktbo.getListSkill();
+					System.out.println(ds2.size());
+					for(KyNangNhanVienBean kn : ds2) {
+						Object[] t = new Object[4];
+						t[0] = kn.getMaNV();
+						t[1] = knBo.getTenNhanVien(kn.getMaNV());
+						t[2] = knBo.getTenKyNang(kn.getMaKyNang());
+						t[3] = kn.getMoTaKhac();
+						mh.addRow(t);
+					}
+					table.setModel(mh);
+					ktbo = new KyNangNhanVienBo();
+				} catch (Exception tt) {
+					tt.printStackTrace();
+				}
+			}
+		});
+		btnRefresh.setBounds(360, 33, 89, 23);
+		panel.add(btnRefresh);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Ch\u1EC9nh s\u1EEDa k\u1EF9 n\u0103ng", null, panel_1, null);
