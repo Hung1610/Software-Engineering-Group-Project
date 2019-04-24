@@ -172,6 +172,7 @@ public class Form_00_Main extends JFrame {
 		tabbedPane.addTab("Dự Án", null, scrollPane, null);
 		
 		table = new JTable();
+		table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
