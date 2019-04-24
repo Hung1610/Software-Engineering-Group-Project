@@ -36,9 +36,9 @@ public class Form_05_PhanCong {
 	public JFrame frame;
 	private JTable tablePhanCong;
 	private JComboBox cmbProject;
-	private PhanCongBo boPhanCong;
-	private DuAnBo boDuAn;
-	private NhanVienBo boNhanVien;
+	private PhanCongBo boPhanCong = new PhanCongBo();
+	private DuAnBo boDuAn = new DuAnBo();
+	private NhanVienBo boNhanVien = new NhanVienBo();
 	private DefaultTableModel tableModel;
 
 	/**
@@ -109,14 +109,14 @@ public class Form_05_PhanCong {
 							t[5] = pc.getTienDo();
 							tableModel.addRow(t);
 	 					}
-						tablePhanCong.setModel(tableModel);
-
-						hienThiComboBoxDuAn(cmbProject);
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				
+
+				tablePhanCong.setModel(tableModel);
+
+				hienThiComboBoxDuAn(cmbProject);
 			}
 		});
 		
@@ -168,7 +168,7 @@ public class Form_05_PhanCong {
 		btnNewButton.setBounds(449, 53, 115, 23);
 		panel.add(btnNewButton);
 		
-		cmbProject = new JComboBox<DuAnBean>();
+		cmbProject = new JComboBox();
 		cmbProject.setBounds(10, 33, 185, 20);
 		panel.add(cmbProject);
 		
@@ -181,10 +181,40 @@ public class Form_05_PhanCong {
 		tabbedPane.addTab("Thêm/sửa phân công", null, panel_1, null);
 	}
 
-	private void hienThiComboBoxDuAn(JComboBox comboBox) throws Exception {
-		boDuAn.getDuAn();
+	private void hienThiComboBoxDuAn(JComboBox comboBox){
+		try {
+			boDuAn.getDuAn();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for (DuAnBean duAn : boDuAn.da) {
-			comboBox.addItem(duAn);
+			comboBox.addItem(new Item(duAn.getMaDuAn(),duAn.getTenDuAn()));
 		}
 	}
+	 class Item{
+	        private String id;
+	        private String description;
+	 
+	        public Item(String string, String description)
+	        {
+	            this.id = string;
+	            this.description = description;
+	        }
+	 
+	        public String getId()
+	        {
+	            return id;
+	        }
+	 
+	        public String getDescription()
+	        {
+	            return description;
+	        }
+	 
+	        public String toString()
+	        {
+	            return description;
+	        }
+	    }
 }
