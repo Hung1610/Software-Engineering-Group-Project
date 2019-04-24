@@ -1,0 +1,11 @@
+tl1: Thiếu tên đề tài
+
+tl5: Kỹ năng chưa có yêu cầu
+	uml activity chua xong
+	co 2 phan ra chuc nang: phan ra chuc nang ban dau nho, ko doc dc
+	da con dfd nhung chua them vao
+
+tl6: THiet ke thuat toan
+
+tl7:
+	
