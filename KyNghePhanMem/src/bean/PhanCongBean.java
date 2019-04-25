@@ -3,6 +3,19 @@ package bean;
 import java.util.Date;
 
 public class PhanCongBean {
+	public PhanCongBean(int maPhanCong, String maNhanVien, String tenNhanVien, String maDuAn, String tenDuAn,
+			Date ngayStart, Date ngayEnd, String ngayDone, String tienDo) {
+		super();
+		MaPhanCong = maPhanCong;
+		MaNhanVien = maNhanVien;
+		TenNhanVien = tenNhanVien;
+		MaDuAn = maDuAn;
+		TenDuAn = tenDuAn;
+		NgayStart = ngayStart;
+		NgayEnd = ngayEnd;
+		NgayDone = ngayDone;
+		TienDo = tienDo;
+	}
 	public PhanCongBean(int maPhanCong, String maNhanVien, String maDuAn, Date ngayStart, Date ngayEnd, String ngayDone,
 			String tienDo) {
 		super();
@@ -20,7 +33,9 @@ public class PhanCongBean {
 	}
 	private int MaPhanCong;
 	private String MaNhanVien;
+	private String TenNhanVien;
 	private String MaDuAn;
+	private String TenDuAn;
 	private Date NgayStart;
 	private Date NgayEnd;
 	private String NgayDone;
@@ -66,5 +81,21 @@ public class PhanCongBean {
 	}
 	public void setTienDo(String tienDo) {
 		TienDo = tienDo;
+	}
+	public String getTenNhanVien() {
+		return TenNhanVien;
+	}
+	public void setTenNhanVien(String tenNhanVien) {
+		TenNhanVien = tenNhanVien;
+	}
+	public String getTenDuAn() {
+		return TenDuAn;
+	}
+	public void setTenDuAn(String tenDuAn) {
+		TenDuAn = tenDuAn;
+	}
+	@Override
+	public String toString() {
+		return "PhanCongBean [toString()=" + super.toString() + "]";
 	}
 }
