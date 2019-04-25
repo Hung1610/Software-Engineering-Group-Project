@@ -33,7 +33,7 @@ public class Form_00_Main extends JFrame {
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTable table;
-	DefaultTableModel mh = new DefaultTableModel();
+	
 	DuAnBo bo = new DuAnBo();
 	ArrayList<DuAnBean> da;
 
@@ -70,11 +70,8 @@ public class Form_00_Main extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
-				mh.addColumn("Mã Dự Án");
-				mh.addColumn("Tên Dự Án");
-				mh.addColumn("Ngày Bắt Đầu");
-				mh.addColumn("Ngày Kết Thúc");
-				mh.addColumn("Tình Trạng");
+				DefaultTableModel mh = (DefaultTableModel) table.getModel();
+				
 				try {
 					DungChung dc = new DungChung();
 					dc.KetNoi();
@@ -89,7 +86,6 @@ public class Form_00_Main extends JFrame {
 						t[4] = da.getTinhTrang();
 						mh.addRow(t);
  					}
-					table.setModel(mh);
 					
 				} catch (Exception e) {
 					// TODO: handle exception
@@ -172,6 +168,20 @@ public class Form_00_Main extends JFrame {
 		tabbedPane.addTab("Dự Án", null, scrollPane, null);
 		
 		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Mã Dự Án","Tên Dự Án","Ngày Bắt Đầu","Ngày Kết Thúc","Tình Trạng"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false,false,false,false,false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(table);
 		

@@ -204,15 +204,6 @@ public class Form_05_PhanCong {
 		btnXa.setBounds(657, 11, 115, 39);
 		panel.add(btnXa);
 		
-		JButton btnNewButton = new JButton("Refresh");
-		btnNewButton.setIcon(new ImageIcon(Form_05_PhanCong.class.getResource("/images/refresh.png")));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(10, 44, 95, 29);
-		panel.add(btnNewButton);
-		
 		cmbFilterDuAn = new JComboBox();
 		cmbFilterDuAn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
