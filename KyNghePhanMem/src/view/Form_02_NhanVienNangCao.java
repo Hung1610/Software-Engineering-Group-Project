@@ -454,7 +454,7 @@ public class Form_02_NhanVienNangCao {
 		}
 		return 1;
 	}
-
+//Hiển thị thông tin các trường của nhân viên khi chọn combobox
 	public void hienThiTextfield() {
 		for (NhanVienBean thongtin : nv) {
 			if (thongtin.getMaNhanVien().equals(comboBox_MaNhanVien.getSelectedItem().toString())) {

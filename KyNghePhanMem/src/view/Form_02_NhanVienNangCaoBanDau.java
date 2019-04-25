@@ -228,6 +228,7 @@ public class Form_02_NhanVienNangCaoBanDau {
 		
 		//Neu dong y thay doi thi bam nut xac nhan thay doi
 		JButton btnXacNhanThayDoi = new JButton("Xác Nhận Thay Đổi");
+		btnXacNhanThayDoi.setEnabled(false);
 		btnXacNhanThayDoi.setIcon(new ImageIcon(getClass().getResource("/images/tick.png")));
 
 		btnXacNhanThayDoi.addActionListener(new ActionListener() {
@@ -263,7 +264,6 @@ public class Form_02_NhanVienNangCaoBanDau {
 				}
 			}
 		});
-		btnXacNhanThayDoi.setEnabled(false);
 		btnXacNhanThayDoi.setBounds(139, 401, 164, 37);
 		panel.add(btnXacNhanThayDoi);
 
