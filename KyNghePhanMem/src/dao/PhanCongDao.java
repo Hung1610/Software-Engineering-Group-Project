@@ -29,7 +29,8 @@ ArrayList<PhanCongBean> nv = new ArrayList<>();
 	}
 	
 	public ArrayList<PhanCongBean> getPhanCong() throws Exception {
-		String sql = "select * from PhanCong";
+		nv.clear();
+		String sql = "select PhanCong.*, TenDuAn, Ten from PhanCong JOIN DuAn on PhanCong.MaDuAn = DuAn.MaDuAn JOIN NhanVien on PhanCong.MaNV = NhanVien.MaNV";
 		PreparedStatement cmd = DungChung.cn.prepareStatement(sql);
 		ResultSet rs=cmd.executeQuery();
 		while(rs.next()) {
@@ -40,13 +41,40 @@ ArrayList<PhanCongBean> nv = new ArrayList<>();
 			Date ngayend= rs.getDate(5);
 			String ngaydone= rs.getString(6);
 			String tiendo= rs.getString(7);
-			PhanCongBean phancong= new PhanCongBean(ma, manv, mada, ngaystart, ngayend, ngaydone, tiendo);
+			String tenda = rs.getString(8);
+			String tennv = rs.getString(9);
+			PhanCongBean phancong= new PhanCongBean(ma, manv, tennv, mada, tenda, ngaystart, ngayend, ngaydone, tiendo);
 			nv.add(phancong);
 		}
 		
 		rs.close();
 		return nv;
 	}
+	
+	public ArrayList<PhanCongBean> getPhanCongByDuAn(String MaDuAn) throws Exception {
+		nv.clear();
+		String sql = "select PhanCong.*, TenDuAn, Ten from PhanCong JOIN DuAn on PhanCong.MaDuAn = DuAn.MaDuAn JOIN NhanVien on PhanCong.MaNV = NhanVien.MaNV Where PhanCong.MaDuAn = ?";
+		PreparedStatement cmd = DungChung.cn.prepareStatement(sql);
+		cmd.setString(1, MaDuAn);
+		ResultSet rs=cmd.executeQuery();
+		while(rs.next()) {
+			int ma= rs.getInt(1);
+			String manv= rs.getString(2);
+			String mada= rs.getString(3);
+			Date ngaystart= rs.getDate(4);
+			Date ngayend= rs.getDate(5);
+			String ngaydone= rs.getString(6);
+			String tiendo= rs.getString(7);
+			String tenda = rs.getString(8);
+			String tennv = rs.getString(9);
+			PhanCongBean phancong= new PhanCongBean(ma, manv, tennv, mada, tenda, ngaystart, ngayend, ngaydone, tiendo);
+			nv.add(phancong);
+		}
+		
+		rs.close();
+		return nv;
+	}
+	
 	
 	public int Xoa(int ma) throws Exception{
 		String sql="delete from PhanCong where MaPhanCong=?";
@@ -58,7 +86,7 @@ ArrayList<PhanCongBean> nv = new ArrayList<>();
 	}
 	
 	public int CapNhat(int MaPhanCong, String MaNhanVien, String MaDuAn, Date NgayStart, Date NgayEnd, String NgayDone, String TienDo) throws Exception {
-		String sql = "update PhanCong set MaNhanVien=?,MaDuAn=?,NgayBatDau=?,NgayKetThuc=?,SoNgayDaLamViec=?,TienDoHoanThanh=? where MaPhanCong=?";
+		String sql = "update PhanCong set MaNV=?,MaDuAn=?,NgayBatDau=?,NgayKetThuc=?,SoNgayDaLamViec=?,TienDoHoanThanh=? where MaPhanCong=?";
 		PreparedStatement cmd = DungChung.cn.prepareStatement(sql);
 		java.sql.Date startDate = new java.sql.Date(NgayStart.getTime());
 		java.sql.Date endDate = new java.sql.Date(NgayEnd.getTime());

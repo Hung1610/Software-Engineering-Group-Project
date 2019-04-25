@@ -54,9 +54,9 @@ public class NhanVienBean {
 		Sdt = sdt;
 		Email = email;
 	}
-	@Override 
+	@Override
 	public String toString() {
-		return TenNhanVien;
+		return getTenNhanVien();
 	}
 	
 	

@@ -50,6 +50,10 @@ public class DuAnBean {
 		NgayKetThuc = ngayKetThuc;
 		TinhTrang = tinhTrang;
 	}
+	@Override
+	public String toString() {
+		return getTenDuAn();
+	}
 	
 	
 	

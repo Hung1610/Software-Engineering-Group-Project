@@ -18,6 +18,7 @@ public class PhanCongBo {
 		pcList = getPhanCong();
 		return 1;
 	}
+	
 	// Lấy thông tin của một phân công
 	public PhanCongBean getInfo(int ma) throws Exception{
 		for(PhanCongBean k : pcList) 
@@ -25,9 +26,16 @@ public class PhanCongBo {
 				return k;
 		return null;	
 	}
+	
 	// Lấy toàn bộ phân công có sẵn trong SQL
 	public ArrayList<PhanCongBean> getPhanCong() throws Exception{
 		pcList=daoPhanCong.getPhanCong();
+		return pcList;
+	}
+	
+	// Lấy toàn bộ phân công có sẵn trong SQL
+	public ArrayList<PhanCongBean> getPhanCongByDuAn(String MaDuAn) throws Exception{
+		pcList=daoPhanCong.getPhanCongByDuAn(MaDuAn);
 		return pcList;
 	}
 	
